@@ -1,11 +1,20 @@
 package com.example.buildmovieapponline.Activites
 
+import CategoryAdapter
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.buildmovieapponline.Domain.SliderItems
 import com.example.buildmovieapponline.Adapter.SliderAdapter
+import com.example.buildmovieapponline.Model.RetrofitClient
+import com.example.buildmovieapponline.ModelApi.ApiResponse
+import com.example.buildmovieapponline.ModelApi.Category
 import com.example.buildmovieapponline.databinding.ActivityMainBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -17,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        initView()
         banners()
     }
 
@@ -34,7 +43,30 @@ class MainActivity : AppCompatActivity() {
         binding.viewpagerSlider.offscreenPageLimit = 3
         binding.viewpagerSlider.clipToPadding = false
         binding.viewpagerSlider.getChildAt(0).overScrollMode
-
     }
+
+    private fun initView() {
+        RetrofitClient.instance.getCategories().enqueue(object : Callback<ApiResponse> {
+            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                if (response.isSuccessful) {
+                    val categories = response.body()?.body ?: emptyList()
+                    setupCategories(categories)
+                } else {
+                    Log.e("MainActivity", "Error fetching categories: ${response.errorBody()?.string()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                Log.e("MainActivity", "API call failed: ${t.message}")
+            }
+        })
+    }
+
+    private fun setupCategories(categories: List<Category>) {
+        val layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewBestMovie.layoutManager = layoutManager
+        binding.recyclerViewBestMovie.adapter = CategoryAdapter(categories)
+    }
+
 
 }
