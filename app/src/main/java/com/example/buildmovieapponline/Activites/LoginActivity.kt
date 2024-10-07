@@ -1,4 +1,4 @@
-package com.example.buildmovieapponline
+package com.example.buildmovieapponline.Activites
 
 import android.content.Intent
 import android.os.Bundle
@@ -19,8 +19,8 @@ class LoginActivity : AppCompatActivity() {
             val editpass = binding.editTextLogIn
             if (edituser.text.toString().isEmpty() || editpass.text.toString().isEmpty()){
                 Toast.makeText(this@LoginActivity, "please fill your username and password", Toast.LENGTH_SHORT).show()
-            }else if(edituser.text.toString() == "test" || editpass.text.toString() == "1"){
-                val intent = Intent (this@LoginActivity,MainActivity::class.java)
+            }else if(edituser.text.toString() == "1" || editpass.text.toString() == ""){
+                val intent = Intent (this@LoginActivity, MainActivity::class.java)
                 startActivity(intent)
             }else{
                 Toast.makeText(this@LoginActivity, "Your username and password is incorrect", Toast.LENGTH_SHORT).show()

@@ -1,11 +1,8 @@
-package com.example.buildmovieapponline
+package com.example.buildmovieapponline.Activites
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.buildmovieapponline.databinding.ActivityIntroBinding
 
 class IntroActivity : AppCompatActivity() {
@@ -16,7 +13,7 @@ class IntroActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.introBtn.setOnClickListener {
-            val intent = Intent(this@IntroActivity,LoginActivity::class.java)
+            val intent = Intent(this@IntroActivity, LoginActivity::class.java)
             startActivity(intent)
         }
 

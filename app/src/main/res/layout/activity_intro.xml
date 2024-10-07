@@ -8,7 +8,7 @@
     android:focusableInTouchMode="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IntroActivity">
+    tools:context=".Activites.IntroActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -90,12 +90,12 @@
                     android:textColor="#9F9A9A"
                     android:text="@string/tv4_detail" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/intro_Btn"
                     android:textAllCaps="false"
                     android:background="@drawable/orange_button_background"
                     android:textColor="@color/white"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="15dp"
                     android:textSize="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
