@@ -5,6 +5,11 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimaryDark">@color/main_color</item>
     </style>
+    <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splashmytv</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.BuildMovieAppOnline</item>
+    </style>
 
     <style name="Theme.BuildMovieAppOnline" parent="Base.Theme.BuildMovieAppOnline" />
 </resources>
