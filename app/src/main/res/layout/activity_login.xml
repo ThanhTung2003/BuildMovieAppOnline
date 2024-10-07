@@ -26,18 +26,19 @@
                     android:textSize="50dp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:text="Log in" />
+                    android:text="Đăng nhập" />
 
 
             <EditText
                 android:id="@+id/editTextLogIn"
                 android:layout_width="match_parent"
                 android:layout_height="50sp"
-                android:hint="UserName"
+                android:hint="Số điện thoại/tên tài khoản"
                 android:paddingStart="15dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/grey"
                 android:background="@drawable/edit_text_background"
+                android:imeOptions="actionNext"
                 android:layout_marginTop="128dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
@@ -48,10 +49,11 @@
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50sp"
-                android:hint="Password"
+                android:hint="Mật khẩu"
+                android:imeOptions="actionDone"
                 android:paddingStart="15dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/grey"
                 android:background="@drawable/edit_text_background"
                 android:layout_marginTop="30dp"
                 android:layout_marginStart="32dp"
@@ -68,7 +70,7 @@
                 android:layout_marginTop="15sp"
                 android:layout_marginStart="30dp"
                 android:textAlignment="center"
-                android:text="Forget Your Password!" />
+                android:text="Quên mật khẩu?" />
             
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/login_Btn"
@@ -95,7 +97,7 @@
                 android:layout_marginTop="15sp"
                 android:layout_marginStart="30dp"
                 android:textAlignment="center"
-                android:text="Don't have an account?" />
+                android:text="Bạn chưa có tài khoản?" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -106,7 +108,7 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:text="Register Now" />
+                android:text="Đăng ký ngay" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

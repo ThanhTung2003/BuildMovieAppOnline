@@ -2,9 +2,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.example.buildmovieapponline.ModelApi.Movie
-import com.example.buildmovieapponline.R
 import com.example.buildmovieapponline.databinding.MovieItemBinding
 
 class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {

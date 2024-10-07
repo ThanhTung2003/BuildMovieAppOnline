@@ -3,6 +3,8 @@ package com.example.buildmovieapponline.Activites
 import CategoryAdapter
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
@@ -11,6 +13,7 @@ import com.example.buildmovieapponline.Adapter.SliderAdapter
 import com.example.buildmovieapponline.Model.RetrofitClient
 import com.example.buildmovieapponline.ModelApi.ApiResponse
 import com.example.buildmovieapponline.ModelApi.Category
+import com.example.buildmovieapponline.R
 import com.example.buildmovieapponline.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,12 +23,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var sliderAdapter: SliderAdapter
     private var sliderItems: MutableList<SliderItems> = ArrayList()
-
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        progressBar = binding.progressBar1
         initView()
         banners()
     }
@@ -46,8 +51,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        progressBar.visibility = View.VISIBLE  // Hiển thị ProgressBar khi bắt đầu tải dữ liệu
         RetrofitClient.instance.getCategories().enqueue(object : Callback<ApiResponse> {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                progressBar.visibility = View.GONE  // Ẩn ProgressBar khi nhận được phản hồi
                 if (response.isSuccessful) {
                     val categories = response.body()?.body ?: emptyList()
                     setupCategories(categories)
@@ -57,6 +64,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                progressBar.visibility = View.GONE  // Ẩn ProgressBar khi có lỗi
                 Log.e("MainActivity", "API call failed: ${t.message}")
             }
         })

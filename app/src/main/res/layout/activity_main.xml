@@ -28,14 +28,14 @@
                 android:drawableEnd="@drawable/microphone"
                 android:drawablePadding="8dp"
                 android:ems="10"
-                android:hint="Search Movie..."
+                android:hint="Tìm phim..."
                 android:inputType="text"
                 android:padding="12dp"
                 android:textColorHint="@color/white" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp">
+                android:layout_height="550dp">
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/viewpagerSlider"
@@ -49,6 +49,7 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginBottom="55dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -64,16 +65,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-<!--                <ProgressBar-->
-<!--                    android:id="@+id/progressBar1"-->
-<!--                    android:indeterminate="false"-->
-<!--                    style="?android:attr/progressBarStyle"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="@+id/recyclerView_bestMovie"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/recyclerView_bestMovie" />-->
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    android:indeterminate="false"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/recyclerView_bestMovie"
+                    app:layout_constraintTop_toTopOf="@+id/recyclerView_bestMovie" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -82,7 +83,7 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
