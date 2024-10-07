@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.buildmovieapponline"
-        minSdk = 31
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -62,4 +62,6 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.0")
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation("androidx.core:core-splashscreen:1.0.0")
+
 }

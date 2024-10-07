@@ -30,8 +30,10 @@
                 android:ems="10"
                 android:hint="Tìm phim..."
                 android:inputType="text"
+                android:imeOptions="actionSearch"
                 android:padding="12dp"
-                android:textColorHint="@color/white" />
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
