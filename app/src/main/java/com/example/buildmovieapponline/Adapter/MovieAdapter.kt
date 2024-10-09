@@ -3,9 +3,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.buildmovieapponline.ModelApi.Movie
+import com.example.buildmovieapponline.ModelApi.MovieItemListener
 import com.example.buildmovieapponline.databinding.MovieItemBinding
 
-class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(private val movies: List<Movie>, private val listener: MovieItemListener) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val binding = MovieItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -13,6 +14,10 @@ class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Movie
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        val movie = movies[position]
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(movie)
+        }
         holder.bind(movies[position])
     }
 
