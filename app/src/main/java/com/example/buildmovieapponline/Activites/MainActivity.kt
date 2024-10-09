@@ -8,13 +8,12 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.ViewPager2
+import com.example.buildmovieapponline.Activites.SearchActivity.SearchActivity
 import com.example.buildmovieapponline.Domain.SliderItems
 import com.example.buildmovieapponline.Adapter.SliderAdapter
 import com.example.buildmovieapponline.Model.RetrofitClient
 import com.example.buildmovieapponline.ModelApi.ApiResponse
 import com.example.buildmovieapponline.ModelApi.Category
-import com.example.buildmovieapponline.R
 import com.example.buildmovieapponline.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,8 +34,9 @@ class MainActivity : AppCompatActivity() {
         initView()
         banners()
 
-        binding.editTextSearch.setOnClickListener{
-            val intent = Intent(this@MainActivity,SearchActivity::class.java)
+        binding.iconSearch.setOnClickListener {
+            val intent = Intent(this@MainActivity, SearchActivity::class.java)
+            intent.putExtra("search_query", binding.iconSearch.text.toString())
             startActivity(intent)
         }
     }

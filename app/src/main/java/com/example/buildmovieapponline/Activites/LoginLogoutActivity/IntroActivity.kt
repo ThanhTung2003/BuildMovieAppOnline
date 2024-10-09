@@ -1,4 +1,4 @@
-package com.example.buildmovieapponline.Activites
+package com.example.buildmovieapponline.Activites.LoginLogoutActivity
 
 import android.content.Intent
 import android.os.Bundle

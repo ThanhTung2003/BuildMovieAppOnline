@@ -1,9 +1,10 @@
-package com.example.buildmovieapponline.Activites
+package com.example.buildmovieapponline.Activites.LoginLogoutActivity
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.buildmovieapponline.Activites.MainActivity
 import com.example.buildmovieapponline.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {

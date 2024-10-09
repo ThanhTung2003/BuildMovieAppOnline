@@ -6,7 +6,7 @@
     android:background="@drawable/logo_mytv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activites.LoginActivity">
+    tools:context=".Activites.LoginLogoutActivity.LoginActivity">
 
     <ScrollView
         android:layout_width="match_parent"
