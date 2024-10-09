@@ -1,6 +1,7 @@
 package com.example.buildmovieapponline.Activites
 
 import CategoryAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -33,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         progressBar = binding.progressBar1
         initView()
         banners()
+
+        binding.editTextSearch.setOnClickListener{
+            val intent = Intent(this@MainActivity,SearchActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun banners() {

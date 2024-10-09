@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/editTextText"
+                android:id="@+id/editTextSearch"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="16dp"
@@ -30,7 +30,6 @@
                 android:ems="10"
                 android:hint="Tìm phim..."
                 android:inputType="text"
-                android:imeOptions="actionSearch"
                 android:padding="12dp"
                 android:textColorHint="@color/white"
                 android:textColor="@color/white"/>
