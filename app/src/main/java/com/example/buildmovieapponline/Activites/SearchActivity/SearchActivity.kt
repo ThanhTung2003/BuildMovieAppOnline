@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.buildmovieapponline.Adapter.SearchAdapter
 import com.example.buildmovieapponline.Model.RetrofitClient
 import com.example.buildmovieapponline.ModelApi.ApiResponse
 import com.example.buildmovieapponline.ModelApi.Movie
@@ -57,7 +58,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun updateUI(movies: List<Movie>) {
-        val adapter = MovieAdapter(movies)
+        val adapter = SearchAdapter(movies)
         findViewById<RecyclerView>(R.id.listSearchMovie).apply {
             layoutManager = LinearLayoutManager(this@SearchActivity)
             this.adapter = adapter
@@ -67,5 +68,6 @@ class SearchActivity : AppCompatActivity() {
             Toast.makeText(this@SearchActivity, "Không tìm thấy phim phù hợp", Toast.LENGTH_LONG).show()
         }
     }
+
 }
 

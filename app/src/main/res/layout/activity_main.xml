@@ -26,7 +26,7 @@
 
                 <ImageView
                     android:src="@drawable/mytvcircle"
-                    android:layout_marginEnd="75dp"
+                    android:layout_marginEnd="120dp"
                     android:scaleType="fitXY"
                     android:layout_width="50dp"
                     android:layout_height="50dp"/>
@@ -34,7 +34,7 @@
                 <TextView
                     android:id="@+id/iconSearch"
                     android:layout_marginEnd="10dp"
-                    android:layout_width="250dp"
+                    android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:background="@drawable/edit_text_background"
                     android:drawableStart="@drawable/search"
