@@ -11,6 +11,7 @@ import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.buildmovieapponline.Activites.DetailMovie.DetailMovieActivity
+import com.example.buildmovieapponline.Activites.DetailMovie.MovieCategory
 import com.example.buildmovieapponline.Activites.SearchActivity.SearchActivity
 import com.example.buildmovieapponline.Domain.SliderItems
 import com.example.buildmovieapponline.Adapter.SliderAdapter
@@ -81,8 +82,15 @@ class MainActivity : AppCompatActivity(),MovieItemListener {
     }
     // chuyển sang detail phim
     override fun onItemClick(movie: Movie) {
+//        val category = intent.getStringExtra("MOVIE_CATEGORY")
+//        val categoryDisplay = if (category != null) MovieCategory.fromId(category.toInt().toString()) else "Không xác định"
+
         val intent = Intent(this, DetailMovieActivity::class.java)
         intent.putExtra("MOVIE_ID", movie.id)
+        intent.putExtra("MOVIE_NAME", movie.name)
+//        intent.putExtra("MOVIE_CATEGORY", MovieCategory.fromId(movie.category.toInt().toString()))
+        intent.putExtra("MOVIE_DURATION", movie.duration)
+        intent.putExtra("MOVIE_DESCRIPTION", movie.description)
         startActivity(intent)
     }
 

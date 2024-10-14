@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/title_Category"
-            android:text="Phim gần đây"
+            android:text="Phim cùng thể loại"
             android:layout_marginStart="5dp"
             android:textStyle="bold"
             android:textSize="22sp"
@@ -22,17 +22,17 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"/>
 
-            <ImageView
-                android:layout_gravity="center_horizontal"
-                android:layout_marginEnd="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/baseline_arrow_forward_ios_24"/>
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_arrow_forward_ios_24"/>
 
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_Movie"
+        android:id="@+id/recyclerView_SameDetailMovie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

@@ -1,14 +1,17 @@
 package com.example.buildmovieapponline.Activites.SearchActivity
 
 import MovieAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.buildmovieapponline.Activites.MainActivity
 import com.example.buildmovieapponline.Adapter.SearchAdapter
 import com.example.buildmovieapponline.Model.RetrofitClient
 import com.example.buildmovieapponline.ModelApi.ApiResponse
@@ -24,12 +27,19 @@ class SearchActivity : AppCompatActivity() {
         setContentView(R.layout.activity_search)
 
         val searchEditText: EditText = findViewById(R.id.editTextSearch)
+        val buttonBackSearch: ImageButton = findViewById(R.id.button_BackSearch)
+
         searchEditText.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 performSearch(v.text.toString())
                 true
             } else false
         }
+
+        buttonBackSearch.setOnClickListener{
+            finish()
+        }
+
     }
 
     private fun performSearch(query: String) {

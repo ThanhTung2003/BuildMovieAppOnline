@@ -1,15 +1,30 @@
 package com.example.buildmovieapponline.Activites.DetailMovie
 
+import MovieAdapter
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.buildmovieapponline.Model.RetrofitClient
+import com.example.buildmovieapponline.ModelApi.ApiResponse
+import com.example.buildmovieapponline.ModelApi.Category
+import com.example.buildmovieapponline.ModelApi.Movie
+import com.example.buildmovieapponline.ModelApi.MovieItemListener
 import com.example.buildmovieapponline.databinding.ActivityDetailMovieBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class DetailMovieActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailMovieBinding
     private var player: ExoPlayer? = null
+    private lateinit var movieAdapter: MovieAdapter
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +32,14 @@ class DetailMovieActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupPlayer()
+        displayMovieDetails()
+    }
+
+    private fun displayMovieDetails() {
+        binding.detailNameMovie.text = intent.getStringExtra("MOVIE_NAME")
+        binding.detailCategoryMovie.text = "Thể loại: ${intent.getStringExtra("MOVIE_CATEGORY")}"
+        binding.detailDurationMovie.text = "Thời lượng phim: ${intent.getIntExtra("MOVIE_DURATION", 0)} phút"
+        binding.detailDescriptionMovie.text = intent.getStringExtra("MOVIE_DESCRIPTION")
     }
 
     private fun setupPlayer() {
