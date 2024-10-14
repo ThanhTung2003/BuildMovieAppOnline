@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Build Movie App Online</string>
     <string name="tv4_detail">MyTv có một thư viện phong phú gồm phim truyện, phim tài liệu, chương trình truyền hình, phim hoạt hình, MyTv từng đoạt giải thưởng và hơn thế nữa.</string>
+    <string name="detailMovie">Mô tả: "Big Buck Bunny" là một bộ phim hoạt hình ngắn được sản xuất bởi Blender Foundation, nổi tiếng với việc sử dụng phần mềm Blender để tạo ra toàn bộ bộ phim. Phim được phát hành vào năm 2008 và được tạo ra để phô diễn khả năng của phần mềm Blender trong lĩnh vực đồ họa 3D.</string>
 </resources>

@@ -15,6 +15,9 @@
         android:theme="@style/Theme.BuildMovieAppOnline"
         tools:targetApi="31">
         <activity
+            android:name=".Activites.DetailMovie.DetailMovieActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activites.SearchActivity.SearchActivity"
             android:exported="false" />
         <activity

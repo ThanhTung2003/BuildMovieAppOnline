@@ -10,18 +10,22 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.buildmovieapponline.Activites.DetailMovie.DetailMovieActivity
+import com.example.buildmovieapponline.Activites.DetailMovie.MovieCategory
 import com.example.buildmovieapponline.Activites.SearchActivity.SearchActivity
 import com.example.buildmovieapponline.Domain.SliderItems
 import com.example.buildmovieapponline.Adapter.SliderAdapter
 import com.example.buildmovieapponline.Model.RetrofitClient
 import com.example.buildmovieapponline.ModelApi.ApiResponse
 import com.example.buildmovieapponline.ModelApi.Category
+import com.example.buildmovieapponline.ModelApi.Movie
+import com.example.buildmovieapponline.ModelApi.MovieItemListener
 import com.example.buildmovieapponline.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),MovieItemListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var sliderAdapter: SliderAdapter
     private var sliderItems: MutableList<SliderItems> = ArrayList()
@@ -76,12 +80,24 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+    // chuyển sang detail phim
+    override fun onItemClick(movie: Movie) {
+//        val category = intent.getStringExtra("MOVIE_CATEGORY")
+//        val categoryDisplay = if (category != null) MovieCategory.fromId(category.toInt().toString()) else "Không xác định"
+
+        val intent = Intent(this, DetailMovieActivity::class.java)
+        intent.putExtra("MOVIE_ID", movie.id)
+        intent.putExtra("MOVIE_NAME", movie.name)
+//        intent.putExtra("MOVIE_CATEGORY", MovieCategory.fromId(movie.category.toInt().toString()))
+        intent.putExtra("MOVIE_DURATION", movie.duration)
+        intent.putExtra("MOVIE_DESCRIPTION", movie.description)
+        startActivity(intent)
+    }
 
     private fun setupCategories(categories: List<Category>) {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerViewBestMovie.layoutManager = layoutManager
-        binding.recyclerViewBestMovie.adapter = CategoryAdapter(categories)
+        binding.recyclerViewBestMovie.adapter = CategoryAdapter(categories, this)
     }
-
 
 }
