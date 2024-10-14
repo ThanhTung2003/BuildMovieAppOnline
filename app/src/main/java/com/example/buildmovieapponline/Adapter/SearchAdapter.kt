@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.buildmovieapponline.ModelApi.Movie
+import com.example.buildmovieapponline.ModelApi.MovieItemListener
 import com.example.buildmovieapponline.R
 
-class SearchAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
+class SearchAdapter(private val movies: List<Movie>, private val listener: MovieItemListener) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.search_item, parent, false)
@@ -19,6 +20,9 @@ class SearchAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Sear
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         holder.bind(movies[position])
+        holder.itemView.setOnClickListener{
+            listener.onItemClick(movies[position])
+        }
     }
 
     override fun getItemCount(): Int = movies.size
