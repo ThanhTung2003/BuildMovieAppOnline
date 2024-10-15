@@ -1,30 +1,21 @@
 package com.example.buildmovieapponline.Activites.DetailMovie
 
-import MovieAdapter
+import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.ProgressBar
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.buildmovieapponline.Model.RetrofitClient
-import com.example.buildmovieapponline.ModelApi.ApiResponse
-import com.example.buildmovieapponline.ModelApi.Category
-import com.example.buildmovieapponline.ModelApi.Movie
-import com.example.buildmovieapponline.ModelApi.MovieItemListener
+import com.example.buildmovieapponline.R
 import com.example.buildmovieapponline.databinding.ActivityDetailMovieBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class DetailMovieActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailMovieBinding
     private var player: ExoPlayer? = null
-    private lateinit var movieAdapter: MovieAdapter
-    private lateinit var progressBar: ProgressBar
+    private var isFullscreen = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +24,26 @@ class DetailMovieActivity : AppCompatActivity() {
 
         setupPlayer()
         displayMovieDetails()
+        setupControlListeners()
+        backArrowListeners()
+
+    }
+
+    private fun backArrowListeners() {
+        val backExo = findViewById<ImageView>(R.id.back_exo)
+        backExo.setOnClickListener{
+            finish()
+        }
+    }
+
+    private fun setupPlayer() {
+        player = ExoPlayer.Builder(this).build()
+        binding.playerView.player = player
+        val videoUrl = "https://s4.phim1280.tv/20240922/4xwJfbDe/index.m3u8"
+        val mediaItem = MediaItem.fromUri(Uri.parse(videoUrl))
+        player?.setMediaItem(mediaItem)
+        player?.prepare()
+        player?.playWhenReady = true
     }
 
     private fun displayMovieDetails() {
@@ -42,23 +53,40 @@ class DetailMovieActivity : AppCompatActivity() {
         binding.detailDescriptionMovie.text = intent.getStringExtra("MOVIE_DESCRIPTION")
     }
 
-    private fun setupPlayer() {
-        player = ExoPlayer.Builder(this).build()
-        binding.playerView.player = player
+    private fun setupControlListeners() {
+        val exoPlayButton = findViewById<ImageView>(R.id.exo_start)
+        val exoRewindButton = findViewById<ImageView>(R.id.exo_rewind)
+        val exoFastForwardButton = findViewById<ImageView>(R.id.exo_forward)
+        val exoFullscreenButton = findViewById<ImageView>(R.id.exo_fullscreenn)
 
-//        https://video.blender.org/download/videos/6402b77c-b61f-4a06-96ca-c8420a2becf4-1080.mp4
-        val videoUrl = "https://s4.phim1280.tv/20240922/4xwJfbDe/index.m3u8"
-        val mediaItem = MediaItem.fromUri(Uri.parse(videoUrl))
-        player?.setMediaItem(mediaItem)
+        exoPlayButton.setOnClickListener {
+            if (player?.isPlaying == true) {
+                player?.playWhenReady = false
+                exoPlayButton.setImageResource(R.drawable.baseline_play_circle_outline_24)  // Icon phát khi video đang tạm dừng
+            } else {
+                player?.playWhenReady = true
+                exoPlayButton.setImageResource(R.drawable.baseline_pause_circle_outline_24)  // Icon tạm dừng khi video đang phát
+            }
+        }
 
-        player?.prepare()
-        player?.playWhenReady = true
+        exoRewindButton?.setOnClickListener {
+            player?.seekTo(player?.currentPosition?.minus(10000) ?: 0)
+        }
+
+        exoFastForwardButton?.setOnClickListener {
+            player?.seekTo(player?.currentPosition?.plus(10000) ?: 0)
+        }
+
+        exoFullscreenButton?.setOnClickListener {
+            toggleFullscreen()
+        }
     }
 
-    override fun onStart() {
-        super.onStart()
-        if (player == null) {
-            setupPlayer()
+    private fun toggleFullscreen() {
+        requestedOrientation = if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        } else {
+            ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
     }
 
