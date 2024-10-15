@@ -46,7 +46,8 @@ class DetailMovieActivity : AppCompatActivity() {
         player = ExoPlayer.Builder(this).build()
         binding.playerView.player = player
 
-        val videoUrl = "https://video.blender.org/download/videos/6402b77c-b61f-4a06-96ca-c8420a2becf4-1080.mp4"
+//        https://video.blender.org/download/videos/6402b77c-b61f-4a06-96ca-c8420a2becf4-1080.mp4
+        val videoUrl = "https://s4.phim1280.tv/20240922/4xwJfbDe/index.m3u8"
         val mediaItem = MediaItem.fromUri(Uri.parse(videoUrl))
         player?.setMediaItem(mediaItem)
 
