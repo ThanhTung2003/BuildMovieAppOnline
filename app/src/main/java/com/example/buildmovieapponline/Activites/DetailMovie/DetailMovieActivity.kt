@@ -1,6 +1,5 @@
 package com.example.buildmovieapponline.Activites.DetailMovie
 
-import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.net.Uri
@@ -9,9 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.buildmovieapponline.R
+import com.example.buildmovieapponline.UI.stringForTime
 import com.example.buildmovieapponline.databinding.ActivityDetailMovieBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.Player
+
 
 class DetailMovieActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailMovieBinding
@@ -44,7 +46,26 @@ class DetailMovieActivity : AppCompatActivity() {
         val mediaItem = MediaItem.fromUri(Uri.parse(videoUrl))
         player?.setMediaItem(mediaItem)
         player?.prepare()
-        player?.playWhenReady = true
+//        player?.playWhenReady = true
+
+        player!!.addListener(object : Player.Listener {
+            override fun onPlaybackStateChanged(playbackState: Int) {
+                if (playbackState == ExoPlayer.STATE_READY && player!!.playWhenReady) {
+                    val exoDuration = findViewById<TextView>(R.id.exo_duration)
+                    val duration = player!!.duration
+                    exoDuration.setText(stringForTime(duration))
+                }
+            }
+
+            override fun onIsPlayingChanged(isPlaying: Boolean) {
+                if (!isPlaying) {
+                    val timeExo = findViewById<TextView>(R.id.time_exo)
+                    val position = player!!.currentPosition
+                    timeExo.setText(stringForTime(position))
+                }
+            }
+        })
+
     }
 
     private fun displayMovieDetails() {
@@ -63,13 +84,7 @@ class DetailMovieActivity : AppCompatActivity() {
         val exoFullscreenButton = findViewById<ImageView>(R.id.exo_fullscreenn)
 
         exoPlayButton.setOnClickListener {
-            if (player?.isPlaying == true) {
-                player?.playWhenReady = false
-                exoPlayButton.setImageResource(R.drawable.baseline_play_circle_outline_24)  // Icon phát khi video đang tạm dừng
-            } else {
-                player?.playWhenReady = true
-                exoPlayButton.setImageResource(R.drawable.baseline_pause_circle_outline_24)  // Icon tạm dừng khi video đang phát
-            }
+            togglePlayPause()
         }
 
         exoRewindButton?.setOnClickListener {
@@ -82,6 +97,17 @@ class DetailMovieActivity : AppCompatActivity() {
 
         exoFullscreenButton?.setOnClickListener {
             toggleFullscreen()
+        }
+    }
+
+    private fun togglePlayPause() {
+        if (player?.isPlaying == true)
+        {
+            player?.playWhenReady = false
+            findViewById<ImageView>(R.id.exo_start).setImageResource(R.drawable.baseline_play_circle_outline_24)
+        }else{
+            player?.playWhenReady = true
+            findViewById<ImageView>(R.id.exo_start).setImageResource(R.drawable.baseline_pause_circle_outline_24)
         }
     }
 
