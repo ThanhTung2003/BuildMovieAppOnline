@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.buildmovieapponline.R
 import com.example.buildmovieapponline.databinding.ActivityDetailMovieBinding
@@ -51,6 +52,8 @@ class DetailMovieActivity : AppCompatActivity() {
         binding.detailCategoryMovie.text = "Thể loại: ${intent.getStringExtra("MOVIE_CATEGORY")}"
         binding.detailDurationMovie.text = "Thời lượng phim: ${intent.getIntExtra("MOVIE_DURATION", 0)} phút"
         binding.detailDescriptionMovie.text = intent.getStringExtra("MOVIE_DESCRIPTION")
+        val titleExo = findViewById<TextView>(R.id.title_exo)
+        titleExo.text = intent.getStringExtra("MOVIE_NAME")
     }
 
     private fun setupControlListeners() {
