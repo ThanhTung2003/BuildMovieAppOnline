@@ -3,15 +3,12 @@ package com.example.buildmovieapponline.Activites
 import CategoryAdapter
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.buildmovieapponline.Activites.DetailMovie.DetailMovieActivity
-import com.example.buildmovieapponline.Activites.DetailMovie.MovieCategory
 import com.example.buildmovieapponline.Activites.SearchActivity.SearchActivity
 import com.example.buildmovieapponline.Domain.SliderItems
 import com.example.buildmovieapponline.Adapter.SliderAdapter
@@ -39,7 +36,12 @@ class MainActivity : AppCompatActivity(),MovieItemListener {
         progressBar = binding.progressBar1
         initView()
         banners()
+        search()
 
+
+    }
+
+    private fun search() {
         binding.iconSearch.setOnClickListener {
             val intent = Intent(this@MainActivity, SearchActivity::class.java)
             intent.putExtra("search_query", binding.iconSearch.text.toString())
@@ -82,8 +84,6 @@ class MainActivity : AppCompatActivity(),MovieItemListener {
     }
     // chuyển sang detail phim
     override fun onItemClick(movie: Movie) {
-//        val category = intent.getStringExtra("MOVIE_CATEGORY")
-//        val categoryDisplay = if (category != null) MovieCategory.fromId(category.toInt().toString()) else "Không xác định"
 
         val intent = Intent(this, DetailMovieActivity::class.java)
         intent.putExtra("MOVIE_ID", movie.id)
