@@ -8,8 +8,12 @@ interface MovieApiService {
     @GET("xprogamer/api/internship/exercise_5/home_page")
     fun getCategories(): Call<ApiResponse>
 
+    @GET("moviesByCategory")
+    fun getMoviesByCategory(@Query("categoryId") categoryId: Int): Call<ApiResponse>
+
     @GET("search_movies")
     fun searchMovies(@Query("query") query: String): Call<ApiResponse>
+
 }
 
 

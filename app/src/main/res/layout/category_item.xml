@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"/>
 
             <ImageView
+                android:id="@+id/viewallCategory"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="5dp"
                 android:layout_width="wrap_content"
