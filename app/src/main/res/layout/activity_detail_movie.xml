@@ -29,7 +29,7 @@
                 app:show_buffering="when_playing"
                 app:controller_layout_id="@layout/custom_exoplayer"
                 android:layout_width="match_parent"
-                android:layout_height="380dp" />
+                android:layout_height="375dp" />
 
             <LinearLayout
                 android:layout_marginStart="10dp"
