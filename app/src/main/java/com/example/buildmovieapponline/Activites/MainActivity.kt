@@ -17,6 +17,7 @@ import com.example.buildmovieapponline.ModelApi.ApiResponse
 import com.example.buildmovieapponline.ModelApi.Category
 import com.example.buildmovieapponline.ModelApi.Movie
 import com.example.buildmovieapponline.ModelApi.MovieItemListener
+import com.example.buildmovieapponline.Activites.account.AccountActivity
 import com.example.buildmovieapponline.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,14 +38,25 @@ class MainActivity : AppCompatActivity(),MovieItemListener {
         initView()
         banners()
         search()
+        accout()
 
+    }
 
+    private fun accout() {
+        binding.iconUser.setOnClickListener{
+            val intent = Intent(this@MainActivity, AccountActivity::class.java)
+            startActivity(intent)
+        }
+        binding.iconAccount.setOnClickListener {
+            val intent = Intent(this@MainActivity, AccountActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun search() {
         binding.iconSearch.setOnClickListener {
             val intent = Intent(this@MainActivity, SearchActivity::class.java)
-            intent.putExtra("search_query", binding.iconSearch.text.toString())
+            intent.putExtra("search_query", binding.iconSearch.textAlignment.toString())
             startActivity(intent)
         }
     }

@@ -30,28 +30,32 @@
 
                 <ImageView
                     android:src="@drawable/mytvcircle"
-                    android:layout_marginEnd="100dp"
+                    android:layout_marginEnd="130dp"
                     android:scaleType="fitXY"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="60dp"/>
 
-                <TextView
+                <ImageButton
                     android:id="@+id/iconSearch"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="16dp"
                     android:layout_width="0dp"
-                    android:layout_weight="3"
-                    android:layout_height="50dp"
-                    android:background="@drawable/edit_text_background"
-                    android:drawableStart="@drawable/search"
-                    android:drawableEnd="@drawable/microphone"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="Tìm phim..."
-                    android:padding="12dp"
-                    android:textColorHint="@color/white"
-                    android:textColor="@color/white"/>
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/search"
+                    android:background="@color/main_color"
+                    app:tint="@color/white"/>
+
+                <ImageButton
+                    android:id="@+id/iconUser"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_account_circle_24"
+                    android:background="@color/main_color"
+                    app:tint="@color/white"/>
 
             </LinearLayout>
 
@@ -124,13 +128,13 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/button_Homepage"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.25"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/image3"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
@@ -148,13 +152,13 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/image4"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.25"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/image4"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
@@ -172,13 +176,13 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/image5"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.25"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/image5"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
@@ -196,13 +200,13 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/iconAccount"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.25"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/image6"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
