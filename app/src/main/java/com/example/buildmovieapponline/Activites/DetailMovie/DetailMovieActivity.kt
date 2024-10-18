@@ -42,7 +42,7 @@ class DetailMovieActivity : AppCompatActivity() {
     private fun setupPlayer() {
         player = ExoPlayer.Builder(this).build()
         binding.playerView.player = player
-        val videoUrl = "https://s4.phim1280.tv/20241009/3e1czhzf/index.m3u8"
+        val videoUrl = "https://s3.phim1280.tv/20240411/VjV5ECNY/index.m3u8"
         val mediaItem = MediaItem.fromUri(Uri.parse(videoUrl))
         player?.setMediaItem(mediaItem)
         player?.prepare()
