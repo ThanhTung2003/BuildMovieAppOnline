@@ -63,7 +63,6 @@ class CategoryMovieActivity : AppCompatActivity() {
     }
 
 
-
     private fun backArrow() {
         binding.backViewAllCategory.setOnClickListener {
             finish()
