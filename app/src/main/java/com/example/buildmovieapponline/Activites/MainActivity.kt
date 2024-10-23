@@ -3,6 +3,8 @@ package com.example.buildmovieapponline.Activites
 import CategoryAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
@@ -28,6 +30,11 @@ class MainActivity : AppCompatActivity(),MovieItemListener {
     private lateinit var sliderAdapter: SliderAdapter
     private var sliderItems: MutableList<SliderItems> = ArrayList()
     private lateinit var progressBar: ProgressBar
+    private var currentPage = 0
+
+    private val sliderHandler : Handler = Handler(Looper.getMainLooper())
+    private lateinit var sliderRunnable:Runnable
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,23 +44,36 @@ class MainActivity : AppCompatActivity(),MovieItemListener {
         progressBar = binding.progressBar1
         initView()
         banners()
-        search()
-        accout()
+        setupSliderRunnable()
+        buttonBottomappbar()
 
     }
 
-    private fun accout() {
+    private fun buttonBottomappbar() {
+        //trang chủ
+        binding.buttonHomepage.setOnClickListener {
+            val intent = Intent(this@MainActivity,MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+            startActivity(intent)
+            finish()
+        }
+        binding.iconlogohome.setOnClickListener {
+            val intent = Intent(this@MainActivity,MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+            startActivity(intent)
+            finish()
+        }
+        //account
         binding.iconUser.setOnClickListener{
             val intent = Intent(this@MainActivity, AccountActivity::class.java)
             startActivity(intent)
         }
+
         binding.iconAccount.setOnClickListener {
             val intent = Intent(this@MainActivity, AccountActivity::class.java)
             startActivity(intent)
         }
-    }
-
-    private fun search() {
+        //search
         binding.iconSearch.setOnClickListener {
             val intent = Intent(this@MainActivity, SearchActivity::class.java)
             intent.putExtra("search_query", binding.iconSearch.textAlignment.toString())
@@ -73,6 +93,31 @@ class MainActivity : AppCompatActivity(),MovieItemListener {
         sliderAdapter = SliderAdapter(binding.viewpagerSlider, sliderItems)
         binding.viewpagerSlider.adapter = sliderAdapter
 
+    }
+
+    private fun setupSliderRunnable() {
+        sliderRunnable = Runnable() {
+            sliderRunnable = Runnable {
+                currentPage = (currentPage + 1) % sliderAdapter.itemCount
+                binding.viewpagerSlider.currentItem = currentPage
+                sliderHandler.postDelayed(sliderRunnable, 3000)
+            }
+            startAutoSlider()
+        }
+    }
+
+    private fun startAutoSlider() {
+        sliderHandler.postDelayed(sliderRunnable, 3000)  // Bắt đầu chạy tự động
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sliderHandler.removeCallbacks(sliderRunnable)  // Ngừng khi Activity không hiển thị
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sliderHandler.postDelayed(sliderRunnable, 3000)  // Tiếp tục khi Activity hiển thị lại
     }
 
     private fun initView() {
