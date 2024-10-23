@@ -11,7 +11,9 @@ import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.buildmovieapponline.Activites.DetailMovie.DetailMovieActivity
+import com.example.buildmovieapponline.Activites.FavouriteMovie.FavoriteMovieActivity
 import com.example.buildmovieapponline.Activites.SearchActivity.SearchActivity
+import com.example.buildmovieapponline.Activites.TVChannel.TVChannelActivity
 import com.example.buildmovieapponline.Domain.SliderItems
 import com.example.buildmovieapponline.Adapter.SliderAdapter
 import com.example.buildmovieapponline.Model.RetrofitClient
@@ -62,6 +64,16 @@ class MainActivity : AppCompatActivity(),MovieItemListener {
             intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
             startActivity(intent)
             finish()
+        }
+        //tv chanel
+        binding.iconTvChanel.setOnClickListener{
+            val intent = Intent(this@MainActivity, TVChannelActivity::class.java)
+            startActivity(intent)
+        }
+        //Favourite Movie
+        binding.iconFavouriteMovie.setOnClickListener{
+            val intent = Intent(this@MainActivity, FavoriteMovieActivity::class.java)
+            startActivity(intent)
         }
         //account
         binding.iconUser.setOnClickListener{

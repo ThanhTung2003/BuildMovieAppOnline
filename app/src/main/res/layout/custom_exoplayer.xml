@@ -27,6 +27,18 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"/>
 
+    <ImageButton
+        android:id="@+id/setting_exo"
+        android:src="@drawable/baseline_settings_24"
+        app:layout_constraintBottom_toBottomOf="@+id/title_exo"
+        app:layout_constraintTop_toTopOf="@+id/title_exo"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/main_color"
+        app:tint="@color/white" />
+
     <ImageView
         android:id="@+id/exo_start"
         android:layout_width="wrap_content"
