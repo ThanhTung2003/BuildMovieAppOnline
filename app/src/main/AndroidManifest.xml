@@ -15,6 +15,9 @@
         android:theme="@style/Theme.BuildMovieAppOnline"
         tools:targetApi="31">
         <activity
+            android:name=".Activites.FavouriteMovie.FavoriteMovieActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activites.TVChannel.TVChannelActivity"
             android:exported="false" />
         <activity
