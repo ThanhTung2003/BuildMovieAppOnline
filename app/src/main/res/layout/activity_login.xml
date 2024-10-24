@@ -78,7 +78,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/orange_button_background"
-                android:text="Login"
+                android:text="Đăng nhập"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
