@@ -2,10 +2,12 @@ package com.example.buildmovieapponline.ModelApi
 
 import com.example.buildmovieapponline.ModelApi.DataLogin.LoginRequest
 import com.example.buildmovieapponline.ModelApi.DataLogin.LoginResponse
+import com.example.buildmovieapponline.ModelApi.DataVideo.VideoResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieApiService {
@@ -21,6 +23,10 @@ interface MovieApiService {
 
     @POST("xprogamer/api/internship/exercise_5/login")
     fun login(@Body loginRequest: LoginRequest): Call<LoginResponse>
+
+    @POST("xprogamer/api/internship/exercise_5/play/{id}")
+    fun getVideoLink(@Path("id") movieId: String): Call<VideoResponse>
+
 
 }
 
