@@ -21,7 +21,6 @@ class CategoryMovieActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var categoryMovieAdapter: CategoryMovieAdapter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCategoryMovieBinding.inflate(layoutInflater)

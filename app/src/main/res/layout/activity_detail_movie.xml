@@ -31,6 +31,8 @@
                     android:background="@color/main_color"
                     app:resize_mode="fit"
                     app:show_buffering="when_playing"
+                    app:show_timeout="0"
+                    app:hide_on_touch="false"
                     app:controller_layout_id="@layout/custom_exoplayer"
                     android:layout_width="match_parent"
                     android:layout_height="375dp" />
