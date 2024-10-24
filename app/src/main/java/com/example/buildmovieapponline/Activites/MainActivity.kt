@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.buildmovieapponline.Activites.DetailMovie.DetailMovieActivity
 import com.example.buildmovieapponline.Activites.FavouriteMovie.FavoriteMovieActivity
+import com.example.buildmovieapponline.Activites.LoginLogoutActivity.LoginActivity
 import com.example.buildmovieapponline.Activites.SearchActivity.SearchActivity
 import com.example.buildmovieapponline.Activites.TVChannel.TVChannelActivity
 import com.example.buildmovieapponline.Domain.SliderItems
@@ -42,6 +43,16 @@ class MainActivity : AppCompatActivity(),MovieItemListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+
+        if (!isLoggedIn) {
+            // Chuyển hướng về trang đăng nhập
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         progressBar = binding.progressBar1
         initView()

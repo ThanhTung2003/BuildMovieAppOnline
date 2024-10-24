@@ -44,7 +44,6 @@ class CategoryMovieActivity : AppCompatActivity() {
         }
     }
 
-
     private fun loadMovies(categoryId: Int) {
         RetrofitClient.instance.getMoviesByCategory(categoryId).enqueue(object : Callback<ApiResponse> {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
