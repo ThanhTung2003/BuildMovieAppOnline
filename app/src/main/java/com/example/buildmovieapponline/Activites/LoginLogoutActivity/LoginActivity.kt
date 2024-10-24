@@ -3,6 +3,7 @@ package com.example.buildmovieapponline.Activites.LoginLogoutActivity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.buildmovieapponline.Activites.MainActivity
@@ -25,11 +26,8 @@ class LoginActivity : AppCompatActivity() {
         // Khởi tạo SharedPreferences
         sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
 
-
         buttonLogin()
     }
-
-
 
     private fun buttonLogin() {
         binding.loginBtn.setOnClickListener{
@@ -39,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
             if (username.isEmpty() || password.isEmpty()){
                 Toast.makeText(this@LoginActivity,"Vui lòng điền tên đăng nhập và mật khẩu",Toast.LENGTH_SHORT).show()
             }else{
+                binding.progressBarLogin.visibility = View.VISIBLE
                 login(username,password)
             }
         }
@@ -54,6 +53,7 @@ class LoginActivity : AppCompatActivity() {
                     val editor = sharedPreferences.edit()
                     editor.putBoolean("isLoggedIn", true)
                     editor.apply()
+                    binding.progressBarLogin.visibility = View.VISIBLE
 
                     //login thanh cong
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)

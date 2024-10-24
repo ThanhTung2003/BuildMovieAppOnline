@@ -31,16 +31,15 @@ class AccountActivity : AppCompatActivity() {
             // Xóa trạng thái đăng nhập khỏi SharedPreferences
             val editor = sharedPreferences.edit()
             editor.clear() // Xóa tất cả dữ liệu trong SharedPreferences
-            editor.apply() // Áp dụng thay đổi
-            // Điều hướng về màn hình đăng nhập
+            editor.apply()
+
             val intent = Intent(this@AccountActivity, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             Log.d("check","dang xuat oke")
-            finish() // Kết thúc AccountActivity để không còn lưu trong stack
+            finish()
         }
     }
-
 
     private fun backAccount() {
         binding.backAccount.setOnClickListener {
