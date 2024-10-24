@@ -14,6 +14,7 @@ interface MovieApiService {
     @GET("search_movies")
     fun searchMovies(@Query("query") query: String): Call<ApiResponse>
 
+
 }
 
 
