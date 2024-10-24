@@ -7,11 +7,15 @@ import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.buildmovieapponline.Model.RetrofitClient
+import com.example.buildmovieapponline.ModelApi.DataVideo.VideoResponse
 import com.example.buildmovieapponline.R
 import com.example.buildmovieapponline.UI.stringForTime
 import com.example.buildmovieapponline.databinding.ActivityDetailMovieBinding
@@ -20,6 +24,9 @@ import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ui.DefaultTimeBar
 import com.google.android.exoplayer2.ui.TimeBar
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class DetailMovieActivity : AppCompatActivity() {
@@ -33,11 +40,38 @@ class DetailMovieActivity : AppCompatActivity() {
         binding = ActivityDetailMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupPlayer()
+        val movieId = intent.getStringExtra("MOVIE_ID") ?: ""
+        displayMovieDetails()
+
+        if (movieId.isNotEmpty()) {
+            fetchVideoLink(movieId) // Gọi API để lấy link video theo id
+        } else {
+            Toast.makeText(this, "Movie ID không hợp lệ", Toast.LENGTH_SHORT).show()
+        }
+
+
         displayMovieDetails()
         setupControlListeners()
         backArrowListeners()
 
+    }
+
+    private fun fetchVideoLink(movieId: String) {
+        RetrofitClient.instance.getVideoLink(movieId).enqueue(object : Callback<VideoResponse> {
+            override fun onResponse(call: Call<VideoResponse>, response: Response<VideoResponse>) {
+                if (response.isSuccessful && response.body()?.status == "success") {
+                    val videoUrl = response.body()?.body?.url // Lấy link video từ đối tượng body
+                    setupPlayer(videoUrl ?: "") // Gọi hàm setupPlayer với link video
+                } else {
+                    Toast.makeText(this@DetailMovieActivity, "Không tìm thấy link video", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<VideoResponse>, t: Throwable) {
+                Log.e("check", "Lỗi khi lấy link video: ${t.message}")
+                Toast.makeText(this@DetailMovieActivity, "Lỗi khi lấy link video", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun backArrowListeners() {
@@ -47,13 +81,18 @@ class DetailMovieActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupPlayer() {
-        player = ExoPlayer.Builder(this).build()
-        binding.playerView.player = player
-        val videoUrl = "https://s3.phim1280.tv/20240411/VjV5ECNY/index.m3u8"
-        val mediaItem = MediaItem.fromUri(Uri.parse(videoUrl))
-        player?.setMediaItem(mediaItem)
-        player?.prepare()
+    private fun setupPlayer(videoUrl: String) {
+        if (videoUrl.isNotEmpty()) {
+            player = ExoPlayer.Builder(this).build()
+            binding.playerView.player = player
+
+            val mediaItem = MediaItem.fromUri(Uri.parse(videoUrl))
+            player?.setMediaItem(mediaItem)
+            player?.prepare()
+            player?.playWhenReady = false
+        } else {
+            Toast.makeText(this, "Link video không hợp lệ", Toast.LENGTH_SHORT).show()
+        }
 
         // Bắt đầu cập nhật thời gian hiện tại từng giây
         updateHandler.post(updateRunnable)
@@ -73,24 +112,6 @@ class DetailMovieActivity : AppCompatActivity() {
                     val position = player!!.currentPosition
                     timeExo.text = stringForTime(position)
                 }
-            }
-        })
-
-        // Lắng nghe sự kiện tua (scrubbing) trên TimeBar
-        val exoTimeBar = findViewById<DefaultTimeBar>(R.id.exo_time_bar)
-        exoTimeBar.addListener(object : TimeBar.OnScrubListener {
-            override fun onScrubStart(timeBar: TimeBar, position: Long) {
-                // Bắt đầu kéo tua
-            }
-
-            override fun onScrubMove(timeBar: TimeBar, position: Long) {
-                // Cập nhật vị trí phát của video khi người dùng kéo tua
-                player?.seekTo(position)
-            }
-
-            override fun onScrubStop(timeBar: TimeBar, position: Long, canceled: Boolean) {
-                // Kết thúc tua
-                player?.seekTo(position)
             }
         })
     }
