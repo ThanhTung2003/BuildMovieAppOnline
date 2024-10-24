@@ -1,15 +1,12 @@
 package com.example.buildmovieapponline.ModelApi
 
+import com.example.buildmovieapponline.ModelApi.DataLogin.LoginRequest
+import com.example.buildmovieapponline.ModelApi.DataLogin.LoginResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
-
-data class LoginRequest(val username: String, val password: String)
-data class LoginResponse(val status: String,
-                         val body: String,
-                         val code: Int)
 
 interface MovieApiService {
 

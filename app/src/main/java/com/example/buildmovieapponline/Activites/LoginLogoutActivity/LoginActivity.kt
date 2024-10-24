@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.buildmovieapponline.Activites.MainActivity
 import com.example.buildmovieapponline.Model.RetrofitClient
-import com.example.buildmovieapponline.ModelApi.LoginRequest
-import com.example.buildmovieapponline.ModelApi.LoginResponse
+import com.example.buildmovieapponline.ModelApi.DataLogin.LoginRequest
+import com.example.buildmovieapponline.ModelApi.DataLogin.LoginResponse
 import com.example.buildmovieapponline.databinding.ActivityLoginBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -55,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
                     editor.putBoolean("isLoggedIn", true)
                     editor.apply()
 
-                    // Điều hướng sang MainActivity
+                    //login thanh cong
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
                     finish()
