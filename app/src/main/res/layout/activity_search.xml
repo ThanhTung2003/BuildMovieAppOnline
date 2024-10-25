@@ -36,7 +36,7 @@
                 android:drawableEnd="@drawable/microphone"
                 android:drawablePadding="8dp"
                 android:ems="10"
-                android:hint="Tìm phim..."
+                android:hint="@string/find_film"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:padding="12dp"

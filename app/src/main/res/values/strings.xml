@@ -1,5 +1,48 @@
 <resources>
     <string name="app_name">Build Movie App Online</string>
-    <string name="tv4_detail">MyTv có một thư viện phong phú gồm phim truyện, phim tài liệu, chương trình truyền hình, phim hoạt hình, MyTv từng đoạt giải thưởng và hơn thế nữa.</string>
+
+    <!--  Detail XML-->
     <string name="detailMovie">Mô tả: "Big Buck Bunny" là một bộ phim hoạt hình ngắn được sản xuất bởi Blender Foundation, nổi tiếng với việc sử dụng phần mềm Blender để tạo ra toàn bộ bộ phim. Phim được phát hành vào năm 2008 và được tạo ra để phô diễn khả năng của phần mềm Blender trong lĩnh vực đồ họa 3D.</string>
+
+    <!--  account XML-->
+    <string name="account">Tài khoản</string>
+    <string name="username">Bùi Thanh Tùng</string>
+    <string name="see_info_account">Xem thông tin tài khoản</string>
+    <string name="manage_payment">Quản lý thanh toán</string>
+    <string name="my_list">Danh sách của tôi</string>
+    <string name="setting_app">Cài đặt ứng dụng</string>
+    <string name="support_service">Hỗ trợ dịch vụ</string>
+    <string name="Log_out">Đăng xuất</string>
+
+    <!--  main XML-->
+    <string name="Homepage">Trang chủ</string>
+    <string name="Tv_chanel">Truyền hình</string>
+    <string name="Love">Yêu thích</string>
+    <string name="ic_account">Tài khoản</string>
+    <string name="find_film">Tìm phim...</string>
+    <string name="chanel_tv">Kênh truyền hình</string>
+
+
+    <!--  Login XML-->
+    <string name="Log_in">Đăng nhập</string>
+    <string name="hint_username">Số điện thoại/tên tài khoản</string>
+    <string name="hint_password">Mật khẩu</string>
+    <string name="forget_password">Quên mật khẩu?</string>
+    <string name="you_dont_have_account">Bạn chưa có tài khoản?</string>
+    <string name="register_now">Đăng ký ngay</string>
+
+    <!--  favourite XML-->
+    <string name="favourite_movie">Danh sách phim yêu thích</string>
+
+    <!--  intro XML-->
+    <string name="free_discover">Tự do khám phá</string>
+    <string name="tv_love">Chương trình yêu thích</string>
+    <string name="watch_anytime">Xem bất cứ khi nào</string>
+    <string name="start_now">Bắt đầu ngay</string>
+    <string name="tv4_detail">MyTv có một thư viện phong phú gồm phim truyện, phim tài liệu, chương trình truyền hình, phim hoạt hình, MyTv từng đoạt giải thưởng và hơn thế nữa.</string>
+
+
+
+
+
 </resources>

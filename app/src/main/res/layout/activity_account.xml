@@ -29,7 +29,7 @@
             android:src="@drawable/baseline_arrow_back_ios_new_24"/>
 
         <TextView
-            android:text="Tài khoản"
+            android:text="@string/account"
             android:layout_marginStart="5dp"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -82,7 +82,7 @@
                 android:id="@+id/name_UserAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bùi Thanh Tùng"
+                android:text="@string/username"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="14sp"/>
@@ -90,7 +90,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Xem thông tin tài khoản"
+                android:text="@string/see_info_account"
                 android:textColor="@color/grey"
                 android:textSize="14sp"/>
         </LinearLayout>
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:text="Quản lý thanh toán"
+                android:text="@string/manage_payment"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:layout_marginTop="3dp"
@@ -160,7 +160,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:text="Danh sách của tôi"
+                android:text="@string/my_list"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:layout_marginTop="3dp"
@@ -189,7 +189,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:text="Cài đặt ứng dụng"
+                android:text="@string/setting_app"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:layout_marginTop="3dp"
@@ -218,7 +218,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:text="Hỗ trợ dịch vụ"
+                android:text="@string/support_service"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:layout_marginTop="3dp"
@@ -241,7 +241,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/orange_button_background"
-        android:text="Đăng Xuất"
+        android:text="@string/Log_out"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/white"
