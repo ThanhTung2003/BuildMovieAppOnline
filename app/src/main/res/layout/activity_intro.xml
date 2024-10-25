@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Tự do khám phá"
+                    android:text=""
                     android:textSize="27sp"
                     android:textColor="@color/white"/>
 
@@ -70,7 +70,7 @@
                     android:layout_weight="1"
                     android:textColor="@color/orange"
                     android:textSize="27sp"
-                    android:text="Chương trình yêu thích" />
+                    android:text="@string/tv_love" />
 
                 <TextView
                     android:id="@+id/textView3"
@@ -79,7 +79,7 @@
                     android:layout_weight="1"
                     android:textColor="@color/orange"
                     android:textSize="27sp"
-                    android:text="Xem bất cứ khi nào" />
+                    android:text="@string/watch_anytime" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -100,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Bắt đầu ngay" />
+                    android:text="@string/start_now" />
             </LinearLayout>
 
         </LinearLayout>
