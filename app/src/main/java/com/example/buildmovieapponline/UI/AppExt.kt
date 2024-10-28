@@ -1,5 +1,8 @@
 package com.example.buildmovieapponline.UI
 
+import android.annotation.SuppressLint
+
+@SuppressLint("DefaultLocale")
 fun stringForTime(timeMs: Long): String {
    val totalSeconds = timeMs / 1000
    val seconds = totalSeconds % 60
