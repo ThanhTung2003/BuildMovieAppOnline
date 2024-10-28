@@ -6,7 +6,7 @@
     android:background="@color/main_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activites.TVChannel.TVChannelActivity">
+    tools:context=".View_Activities.TVChannel.TVChannelActivity">
 
     <LinearLayout
         android:id="@+id/header_TvChanel"

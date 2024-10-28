@@ -1,12 +1,18 @@
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.buildmovieapponline.Activites.DetailMovie.CategoryMovieActivity
-import com.example.buildmovieapponline.ModelApi.Movie
+import com.example.buildmovieapponline.Model.Movie
+import com.example.buildmovieapponline.Model.MovieDiffCallback
+import com.example.buildmovieapponline.Model.MovieItemListener
+import com.example.buildmovieapponline.R
 import com.example.buildmovieapponline.databinding.MovieItemBinding
 
-class CategoryMovieAdapter(private var movies: MutableList<Movie>, private val listener: CategoryMovieActivity) : RecyclerView.Adapter<CategoryMovieAdapter.MovieViewHolder>() {
+class CategoryMovieAdapter(
+    private var movies: MutableList<Movie>,
+    private val listener: MovieItemListener
+) : RecyclerView.Adapter<CategoryMovieAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val binding = MovieItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -24,9 +30,11 @@ class CategoryMovieAdapter(private var movies: MutableList<Movie>, private val l
     override fun getItemCount(): Int = movies.size
 
     fun updateMovies(newMovies: List<Movie>) {
+        val diffCallback = MovieDiffCallback(movies, newMovies)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
         movies.clear()
         movies.addAll(newMovies)
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 
     class MovieViewHolder(private val binding: MovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -34,6 +42,8 @@ class CategoryMovieAdapter(private var movies: MutableList<Movie>, private val l
             binding.titleMovie.text = movie.name
             Glide.with(itemView.context)
                 .load(movie.logo)
+                .placeholder(R.drawable.mytvcircle) // Hình ảnh chờ
+                .error(R.drawable.mytvcircle) // Hình ảnh lỗi
                 .into(binding.imageMovie)
         }
     }

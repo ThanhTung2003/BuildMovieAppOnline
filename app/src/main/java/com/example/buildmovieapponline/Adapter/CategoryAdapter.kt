@@ -3,10 +3,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.buildmovieapponline.Activites.DetailMovie.CategoryMovieActivity
-import com.example.buildmovieapponline.Activites.MainActivity
-import com.example.buildmovieapponline.ModelApi.Category
-import com.example.buildmovieapponline.ModelApi.MovieItemListener
+import com.example.buildmovieapponline.View_Activities.DetailMovie.CategoryMovieActivity
+import com.example.buildmovieapponline.View_Activities.MainActivity
+import com.example.buildmovieapponline.Model.Category
+import com.example.buildmovieapponline.Model.MovieItemListener
 import com.example.buildmovieapponline.databinding.CategoryItemBinding
 
 class CategoryAdapter(private val categories: List<Category>, private val listener: MainActivity) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {

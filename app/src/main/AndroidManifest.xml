@@ -15,32 +15,32 @@
         android:theme="@style/Theme.BuildMovieAppOnline"
         tools:targetApi="31">
         <activity
-            android:name=".Activites.FavouriteMovie.FavoriteMovieActivity"
+            android:name=".View_Activities.FavouriteMovie.FavoriteMovieActivity"
             android:exported="false" />
         <activity
-            android:name=".Activites.TVChannel.TVChannelActivity"
+            android:name=".View_Activities.TVChannel.TVChannelActivity"
             android:exported="false" />
         <activity
-            android:name=".Activites.account.AccountActivity"
+            android:name=".View_Activities.account.AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".Activites.DetailMovie.CategoryMovieActivity"
+            android:name=".View_Activities.DetailMovie.CategoryMovieActivity"
             android:exported="false" />
         <activity
-            android:name=".Activites.DetailMovie.DetailMovieActivity"
+            android:name=".View_Activities.DetailMovie.DetailMovieActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".Activites.SearchActivity.SearchActivity"
+            android:name=".View_Activities.SearchActivity.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".Activites.MainActivity"
+            android:name=".View_Activities.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Activites.LoginLogoutActivity.LoginActivity"
+            android:name=".View_Activities.LoginLogoutActivity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".Activites.LoginLogoutActivity.IntroActivity"
+            android:name=".View_Activities.LoginLogoutActivity.IntroActivity"
             android:exported="true"
             android:theme="@style/Theme.App.SplashScreen">
             <intent-filter>

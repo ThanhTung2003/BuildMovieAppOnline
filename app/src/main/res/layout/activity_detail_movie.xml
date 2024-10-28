@@ -6,7 +6,7 @@
     android:background="@color/main_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activites.DetailMovie.DetailMovieActivity">
+    tools:context=".View_Activities.DetailMovie.DetailMovieActivity">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView2"
@@ -128,7 +128,7 @@
                     android:nestedScrollingEnabled="false"/>
 
                 <ProgressBar
-                    android:id="@+id/progressBar2"
+                    android:id="@+id/progressBarSameCategoryMovie"
                     android:indeterminate="false"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"

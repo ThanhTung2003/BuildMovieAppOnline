@@ -41,6 +41,7 @@ android {
     }
 }
 
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -64,5 +65,8 @@ dependencies {
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
     implementation("androidx.core:core-splashscreen:1.0.0")
     implementation("com.google.android.exoplayer:exoplayer:2.19.1")
+    implementation("androidx.core:core-ktx:1.13.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+
 
 }
