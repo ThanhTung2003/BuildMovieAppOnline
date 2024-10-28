@@ -6,7 +6,7 @@
     android:background="@color/main_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activites.FavouriteMovie.FavoriteMovieActivity">
+    tools:context=".View_Activities.FavouriteMovie.FavoriteMovieActivity">
 
     <LinearLayout
         android:id="@+id/header_FavouriteMovie"

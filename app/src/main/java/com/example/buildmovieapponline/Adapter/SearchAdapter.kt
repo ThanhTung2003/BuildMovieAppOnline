@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.buildmovieapponline.ModelApi.Movie
-import com.example.buildmovieapponline.ModelApi.MovieItemListener
+import com.example.buildmovieapponline.Model.Movie
+import com.example.buildmovieapponline.Model.MovieItemListener
 import com.example.buildmovieapponline.R
 
 class SearchAdapter(private val movies: List<Movie>, private val listener: MovieItemListener) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {

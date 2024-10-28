@@ -6,7 +6,7 @@
     android:background="@color/main_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activites.account.AccountActivity">
+    tools:context=".View_Activities.account.AccountActivity">
 
     <LinearLayout
         android:id="@+id/header_Account"
