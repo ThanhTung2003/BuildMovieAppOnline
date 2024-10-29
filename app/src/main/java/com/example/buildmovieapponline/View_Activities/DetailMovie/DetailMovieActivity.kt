@@ -9,6 +9,7 @@ import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.HorizontalScrollView
@@ -41,6 +42,7 @@ class DetailMovieActivity : AppCompatActivity(),MovieItemListener {
     private lateinit var binding: ActivityDetailMovieBinding
     private var player: ExoPlayer? = null
     private var isFullscreen = false
+    private var isDescriptionExpanded = false
     private lateinit var categoryMovieAdapter: CategoryMovieAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,14 +58,40 @@ class DetailMovieActivity : AppCompatActivity(),MovieItemListener {
         } else {
             Toast.makeText(this, "Movie ID không hợp lệ", Toast.LENGTH_SHORT).show()
         }
-        val categoryId = intent.getIntExtra("CATEGORY_ID", 0)
 
-        setSameCategoryMovie()
-        loadSameCategoryMovies(categoryId)
+        val categoryId = intent.getIntExtra("CATEGORY_ID", 0)
+        if (categoryId != 0) {
+            setSameCategoryMovie()
+            loadSameCategoryMovies(categoryId)
+        }
+
+        detailMovieShowMore()
         displayMovieDetails()
         setupControlListeners()
         backArrowListeners()
 
+    }
+
+    private fun detailMovieShowMore() {
+//        binding.detailDescriptionMovie.post{
+//            if (binding.detailDescriptionMovie.lineCount > 3){
+//                binding.showMoreButton.visibility = View.VISIBLE
+//                binding.detailDescriptionMovie.maxLines = 3
+//                binding.showMoreButton.ellipsize = TextUtils.TruncateAt.END
+//            }
+//        }
+//        binding.showMoreButton.setOnClickListener {
+//            isDescriptionExpanded = !isDescriptionExpanded
+//            if (isDescriptionExpanded) {
+//                binding.detailDescriptionMovie.maxLines = Int.MAX_VALUE
+//                binding.detailDescriptionMovie.ellipsize = null
+//                binding.showMoreButton.text = "Thu gọn"
+//            } else {
+//                binding.detailDescriptionMovie.maxLines = 3
+//                binding.detailDescriptionMovie.ellipsize = TextUtils.TruncateAt.END
+//                binding.showMoreButton.text = "Xem thêm"
+//            }
+//        }
     }
 
     private fun loadSameCategoryMovies(categoryId: Int) {
@@ -72,12 +100,12 @@ class DetailMovieActivity : AppCompatActivity(),MovieItemListener {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 binding.progressBarSameCategoryMovie.visibility = View.GONE
                 if (response.isSuccessful && response.body() != null) {
-                    val category = response.body()?.body?.find { it.category == categoryId }
-                    category?.let {
-                        categoryMovieAdapter.updateMovies(it.data) // Cập nhật dữ liệu cho Adapter
+                    val categoryData = response.body()?.body?.find { it.category == categoryId }
+                    categoryData?.let {
+                        categoryMovieAdapter.updateMovies(it.data) // Cập nhật danh sách phim
                     }
                 } else {
-                    Log.e("DetailMovieActivity", "Lỗi không tìm thấy ID: $categoryId")
+                    Log.e("DetailMovieActivity", "Không thể tải danh sách phim cùng thể loại")
                 }
             }
 
@@ -88,16 +116,13 @@ class DetailMovieActivity : AppCompatActivity(),MovieItemListener {
         })
     }
 
-
     private fun setSameCategoryMovie() {
         categoryMovieAdapter = CategoryMovieAdapter(mutableListOf(), this)
         binding.detailRecyclerViewSameMovie.apply {
             layoutManager = LinearLayoutManager(this@DetailMovieActivity, LinearLayoutManager.HORIZONTAL, false)
             adapter = categoryMovieAdapter
         }
-
     }
-
 
 
     private fun fetchVideoLink(movieId: String) {
@@ -257,13 +282,14 @@ class DetailMovieActivity : AppCompatActivity(),MovieItemListener {
     }
 
     override fun onItemClick(movie: Movie) {
+        var categoryId = 2
         val currentMovieId = intent.getStringExtra("MOVIE_ID") ?: ""
         if (movie.id != currentMovieId) {
             val intent = Intent(this, DetailMovieActivity::class.java)
             intent.putExtra("MOVIE_ID", movie.id)
             intent.putExtra("MOVIE_DESCRIPTION", movie.description)
             intent.putExtra("MOVIE_DURATION", movie.duration)
-            intent.putExtra("MOVIE_NAME", movie.name)
+            intent.putExtra("CATEGORY_ID", categoryId)
             intent.putExtra("MOVIE_CATEGORY", movie.category)
             startActivity(intent)
         } else {

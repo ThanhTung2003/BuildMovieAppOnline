@@ -1,5 +1,6 @@
 package com.example.buildmovieapponline.Adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -14,13 +15,14 @@ class TvShowAdapter (
 ): RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
 
     inner class TvShowViewHolder(private val binding: TvshowItemBinding):RecyclerView.ViewHolder(binding.root){
+        @SuppressLint("SetTextI18n")
         fun bind(tvShows: TvShow){
             binding.tvShowName.text = tvShows.name
             binding.tvShowOriginName.text = tvShows.origin_name
-            binding.tvShowYear.text = tvShows.year.toString()
-            binding.tvShowCountry.text = tvShows.country.joinToString { it.name }
-            binding.tvShowEpisodeCurrent.text = tvShows.episode_current
-            binding.tvShowTime.text = "Ngày cập nhật: ${tvShows.time}"
+            binding.tvShowYear.text = "Năm: ${tvShows.year.toString()}"
+            binding.tvShowCountry.text = "Quốc gia: ${tvShows.country.joinToString { it.name }}"
+            binding.tvShowEpisodeCurrent.text = "Tình trạng: ${tvShows.episode_current}"
+            binding.tvShowTime.text = "Thời lượng: ${tvShows.time}"
 
             Glide.with(binding.imageTvShow.context)
                 .load("https://phimimg.com/${tvShows.poster_url}")

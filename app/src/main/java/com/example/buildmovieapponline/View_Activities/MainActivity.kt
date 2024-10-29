@@ -9,8 +9,6 @@ import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.buildmovieapponline.View_Activities.DetailMovie.DetailMovieActivity
 import com.example.buildmovieapponline.View_Activities.FavouriteMovie.FavoriteMovieActivity
@@ -159,11 +157,11 @@ class MainActivity : AppCompatActivity(),MovieItemListener {
 
     // chuyển sang detail phim
     override fun onItemClick(movie: Movie) {
-
+        var categoryId: Int = 1
         val intent = Intent(this, DetailMovieActivity::class.java)
         intent.putExtra("MOVIE_ID", movie.id)
         intent.putExtra("MOVIE_NAME", movie.name)
-        intent.putExtra("MOVIE_CATEGORY", movie.category)
+        intent.putExtra("CATEGORY_ID", categoryId)
         intent.putExtra("MOVIE_DURATION", movie.duration)
         intent.putExtra("MOVIE_DESCRIPTION", movie.description)
         startActivity(intent)

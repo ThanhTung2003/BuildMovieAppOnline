@@ -100,7 +100,15 @@
                     android:text="@string/detailMovie"
                     android:textSize="16sp"
                     android:textColor="@color/white"
-                    android:layout_marginBottom="16dp"/>
+                    android:layout_marginBottom="12dp"/>
+
+                <TextView
+                    android:id="@+id/showMoreButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xem thêm"
+                    android:textColor="@color/orange"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -109,14 +117,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
                 android:text="Phim cùng thể loại"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="@color/yellow"
-                android:layout_marginBottom="8dp"/>
+                android:textColor="@color/yellow" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">

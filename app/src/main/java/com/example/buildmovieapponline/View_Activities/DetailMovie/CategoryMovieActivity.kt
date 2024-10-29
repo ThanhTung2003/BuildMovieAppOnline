@@ -79,12 +79,13 @@ class CategoryMovieActivity : AppCompatActivity(), MovieItemListener {
     }
 
     override fun onItemClick(movie: Movie) {
+        var categoryId = 2
         val intent = Intent(this, DetailMovieActivity::class.java)
         intent.putExtra("MOVIE_ID", movie.id)
         intent.putExtra("MOVIE_DESCRIPTION", movie.description)
         intent.putExtra("MOVIE_DURATION", movie.duration)
         intent.putExtra("MOVIE_NAME", movie.name)
-        intent.putExtra("MOVIE_CATEGORY", movie.category)
+        intent.putExtra("CATEGORY_ID", categoryId)
         startActivity(intent)
     }
 }
