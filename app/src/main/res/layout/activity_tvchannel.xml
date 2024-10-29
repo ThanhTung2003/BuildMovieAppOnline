@@ -8,6 +8,8 @@
     android:layout_height="match_parent"
     tools:context=".View_Activities.TVChannel.TVChannelActivity">
 
+
+
     <LinearLayout
         android:id="@+id/header_TvChanel"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,6 +31,7 @@
         android:src="@drawable/baseline_arrow_back_ios_new_24"/>
 
     <TextView
+        android:id="@+id/titlePage"
         android:text="@string/chanel_tv"
         android:layout_marginStart="5dp"
         android:textStyle="bold"
@@ -38,5 +41,31 @@
         android:layout_height="wrap_content"/>
 
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_TVShow"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="10dp"
+        android:clipToPadding="false"
+        android:paddingBottom="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/header_TvChanel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/progressBarTVShow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

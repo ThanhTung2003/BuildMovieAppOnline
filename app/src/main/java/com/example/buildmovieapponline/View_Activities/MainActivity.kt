@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity(),MovieItemListener {
     private lateinit var sliderRunnable:Runnable
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
