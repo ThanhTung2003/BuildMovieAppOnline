@@ -1,6 +1,6 @@
 package com.example.buildmovieapponline.View_Activities
 
-import CategoryAdapter
+import com.example.buildmovieapponline.Adapter.MovieAdapter.CategoryAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -9,21 +9,18 @@ import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.buildmovieapponline.View_Activities.DetailMovie.DetailMovieActivity
 import com.example.buildmovieapponline.View_Activities.FavouriteMovie.FavoriteMovieActivity
 import com.example.buildmovieapponline.View_Activities.SearchActivity.SearchActivity
 import com.example.buildmovieapponline.View_Activities.TVChannel.TVChannelActivity
 import com.example.buildmovieapponline.Domain.SliderItems
-import com.example.buildmovieapponline.Adapter.SliderAdapter
+import com.example.buildmovieapponline.Adapter.MovieAdapter.SliderAdapter
 import com.example.buildmovieapponline.Model.RetrofitClient
 import com.example.buildmovieapponline.Model.ApiResponse
 import com.example.buildmovieapponline.Model.Category
 import com.example.buildmovieapponline.Model.Movie
 import com.example.buildmovieapponline.Model.MovieItemListener
-import com.example.buildmovieapponline.ViewModel.MainViewModel
 import com.example.buildmovieapponline.View_Activities.account.AccountActivity
 import com.example.buildmovieapponline.databinding.ActivityMainBinding
 import retrofit2.Call
@@ -159,11 +156,11 @@ class MainActivity : AppCompatActivity(),MovieItemListener {
 
     // chuyển sang detail phim
     override fun onItemClick(movie: Movie) {
-
+        var categoryId: Int = 1
         val intent = Intent(this, DetailMovieActivity::class.java)
         intent.putExtra("MOVIE_ID", movie.id)
         intent.putExtra("MOVIE_NAME", movie.name)
-        intent.putExtra("MOVIE_CATEGORY", movie.category)
+        intent.putExtra("CATEGORY_ID", categoryId)
         intent.putExtra("MOVIE_DURATION", movie.duration)
         intent.putExtra("MOVIE_DESCRIPTION", movie.description)
         startActivity(intent)

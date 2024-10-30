@@ -1,5 +1,7 @@
 package com.example.buildmovieapponline.Model.DataTvShow
 
+import java.io.Serializable
+
 data class TvShow(
     val _id: String,
     val name: String,
@@ -14,4 +16,4 @@ data class TvShow(
     val year: Int,
     val category: List<CategoryTvShow>,
     val country: List<Country>
-)
+) : Serializable

@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buildmovieapponline.View_Activities.DetailMovie.DetailMovieActivity
-import com.example.buildmovieapponline.Adapter.SearchAdapter
+import com.example.buildmovieapponline.Adapter.MovieAdapter.SearchAdapter
 import com.example.buildmovieapponline.Model.RetrofitClient
 import com.example.buildmovieapponline.Model.ApiResponse
 import com.example.buildmovieapponline.Model.Movie
@@ -68,11 +68,13 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun updateUI(movies: List<Movie>) {
+        var categoryId = 1
         val adapter = SearchAdapter(movies,object : MovieItemListener{
             override fun onItemClick(movie: Movie) {
                 val intent = Intent(this@SearchActivity, DetailMovieActivity::class.java)
                 intent.putExtra("MOVIE_ID", movie.id)
                 intent.putExtra("MOVIE_NAME", movie.name)
+                intent.putExtra("CATEGORY_ID", categoryId)
                 intent.putExtra("MOVIE_DURATION", movie.duration)
                 intent.putExtra("MOVIE_DESCRIPTION", movie.description)
                 startActivity(intent)
