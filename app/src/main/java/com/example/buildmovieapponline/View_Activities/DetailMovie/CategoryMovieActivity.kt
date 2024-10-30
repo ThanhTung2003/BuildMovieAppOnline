@@ -8,10 +8,10 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.buildmovieapponline.Model.RetrofitClient
-import com.example.buildmovieapponline.Model.ApiResponse
-import com.example.buildmovieapponline.Model.Movie
-import com.example.buildmovieapponline.Model.MovieItemListener
+import com.example.buildmovieapponline.Model.DataXprogramer.RetrofitClient
+import com.example.buildmovieapponline.Model.DataXprogramer.ApiResponse
+import com.example.buildmovieapponline.Model.DataXprogramer.Movie
+import com.example.buildmovieapponline.Model.DataXprogramer.MovieItemListener
 import com.example.buildmovieapponline.databinding.ActivityCategoryMovieBinding
 import retrofit2.Call
 import retrofit2.Callback

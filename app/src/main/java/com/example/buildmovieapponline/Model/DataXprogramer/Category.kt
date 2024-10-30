@@ -1,4 +1,4 @@
-package com.example.buildmovieapponline.Model
+package com.example.buildmovieapponline.Model.DataXprogramer
 
 data class Category(
     val title: String,

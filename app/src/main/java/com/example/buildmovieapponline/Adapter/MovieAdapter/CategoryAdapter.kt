@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buildmovieapponline.View_Activities.DetailMovie.CategoryMovieActivity
 import com.example.buildmovieapponline.View_Activities.MainActivity
-import com.example.buildmovieapponline.Model.Category
-import com.example.buildmovieapponline.Model.MovieItemListener
+import com.example.buildmovieapponline.Model.DataXprogramer.Category
+import com.example.buildmovieapponline.Model.DataXprogramer.MovieItemListener
 import com.example.buildmovieapponline.databinding.CategoryItemBinding
 
 class CategoryAdapter(private val categories: List<Category>, private val listener: MainActivity) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {

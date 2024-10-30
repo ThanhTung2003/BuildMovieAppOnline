@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.buildmovieapponline.Model.Movie
-import com.example.buildmovieapponline.Model.MovieDiffCallback
-import com.example.buildmovieapponline.Model.MovieItemListener
+import com.example.buildmovieapponline.Model.DataXprogramer.Movie
+import com.example.buildmovieapponline.Model.DataXprogramer.MovieDiffCallback
+import com.example.buildmovieapponline.Model.DataXprogramer.MovieItemListener
 import com.example.buildmovieapponline.R
 import com.example.buildmovieapponline.databinding.MovieItemBinding
 

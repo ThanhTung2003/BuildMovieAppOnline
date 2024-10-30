@@ -1,14 +1,15 @@
 package com.example.buildmovieapponline.View_Activities.TVChannel
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.buildmovieapponline.Adapter.EpisodeAdapter
+import com.example.buildmovieapponline.Model.DataTvShow.MovieDetail.Episode
 import com.example.buildmovieapponline.Model.DataTvShow.MovieDetail.TvShowDetailResponse
 import com.example.buildmovieapponline.Model.DataTvShow.TvShowRetrofitClient
 import com.example.buildmovieapponline.R
@@ -47,8 +48,12 @@ class DetailTvShowActivity : AppCompatActivity() {
                 if (response.isSuccessful && response.body() != null) {
                     val tvShowDetails = response.body()!!.movie
                     displayTvShowDetails(tvShowDetails)
-                    val episodeNames = response.body()!!.episodes.flatMap { it.server_data.map {data -> data.name } }
-                    setupEpisodesRecyclerView(episodeNames)
+
+                    // Map name và link_m3u8 của tập phim
+                    val episodeNames = response.body()!!.episodes.flatMap { episode ->
+                        episode.server_data.map { data -> data.name to data.link_m3u8 }
+                    }
+                    setupEpisodesRecyclerView(episodeNames, tvShowDetails.name)
                 } else {
                     Log.e("DetailTvShowActivity", "Không thể tải chi tiết của TV Show")
                 }
@@ -61,9 +66,10 @@ class DetailTvShowActivity : AppCompatActivity() {
         })
     }
 
+
     @SuppressLint("SetTextI18n")
     private fun displayTvShowDetails(tvShowDetails: MovieDetails) {
-        // Cập nhật tên phim
+
         binding.detailTvShowName.text = tvShowDetails.name
         binding.detailTvShowOriginName.text = tvShowDetails.origin_name
         binding.detailTvShowYear.text = "Năm phát hành: ${tvShowDetails.year}"
@@ -76,20 +82,24 @@ class DetailTvShowActivity : AppCompatActivity() {
         binding.detailTvShowCategory.text = "Thể loại: ${tvShowDetails.category.joinToString { it.name }}"
         binding.detailTvShowContent.text = "Mô tả: ${tvShowDetails.content}"
 
-        // Cập nhật hình ảnh Poster
         Glide.with(this)
             .load(tvShowDetails.thumb_url)
             .error(R.drawable.mytvcircle)
             .into(binding.detailPosterTvShow)
     }
 
-    private fun setupEpisodesRecyclerView (episode: List<String>){
-        val episodeAdapter = EpisodeAdapter(episode) { _ -> this
-            Log.d("DetailTvShowActivity", "Nhấn vào: $episode")
+    private fun setupEpisodesRecyclerView(episodeNames: List<Pair<String, String>>, movieName:String) {
+        val episodeAdapter = EpisodeAdapter(episodeNames) { m3u8Link ->
+            val intent = Intent(this, ExoPlayerTvShowActivity::class.java)
+            intent.putExtra("MOVIE_NAME", movieName )
+            intent.putExtra("VIDEO_URL", m3u8Link) // Truyền link m3u8 vào ExoPlayerTvShowActivity
+            startActivity(intent)
         }
         binding.recyclerViewEpisodes.apply {
-            layoutManager = GridLayoutManager(this@DetailTvShowActivity,4)
+            layoutManager = GridLayoutManager(this@DetailTvShowActivity, 4)
             adapter = episodeAdapter
         }
     }
+
+
 }

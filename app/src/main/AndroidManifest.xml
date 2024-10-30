@@ -15,6 +15,9 @@
         android:theme="@style/Theme.BuildMovieAppOnline"
         tools:targetApi="31">
         <activity
+            android:name=".View_Activities.TVChannel.ExoPlayerTvShowActivity"
+            android:exported="false" />
+        <activity
             android:name=".View_Activities.TVChannel.DetailTvShowActivity"
             android:exported="false" />
         <activity

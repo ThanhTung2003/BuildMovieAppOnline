@@ -16,18 +16,18 @@ import com.example.buildmovieapponline.View_Activities.SearchActivity.SearchActi
 import com.example.buildmovieapponline.View_Activities.TVChannel.TVChannelActivity
 import com.example.buildmovieapponline.Domain.SliderItems
 import com.example.buildmovieapponline.Adapter.MovieAdapter.SliderAdapter
-import com.example.buildmovieapponline.Model.RetrofitClient
-import com.example.buildmovieapponline.Model.ApiResponse
-import com.example.buildmovieapponline.Model.Category
-import com.example.buildmovieapponline.Model.Movie
-import com.example.buildmovieapponline.Model.MovieItemListener
+import com.example.buildmovieapponline.Model.DataXprogramer.RetrofitClient
+import com.example.buildmovieapponline.Model.DataXprogramer.ApiResponse
+import com.example.buildmovieapponline.Model.DataXprogramer.Category
+import com.example.buildmovieapponline.Model.DataXprogramer.Movie
+import com.example.buildmovieapponline.Model.DataXprogramer.MovieItemListener
 import com.example.buildmovieapponline.View_Activities.account.AccountActivity
 import com.example.buildmovieapponline.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity(),MovieItemListener {
+class MainActivity : AppCompatActivity(), MovieItemListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var sliderAdapter: SliderAdapter
     private var sliderItems: MutableList<SliderItems> = ArrayList()

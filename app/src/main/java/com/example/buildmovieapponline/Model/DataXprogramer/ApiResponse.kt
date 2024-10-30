@@ -1,4 +1,4 @@
-package com.example.buildmovieapponline.Model
+package com.example.buildmovieapponline.Model.DataXprogramer
 
 data class ApiResponse(
     val status: String,
