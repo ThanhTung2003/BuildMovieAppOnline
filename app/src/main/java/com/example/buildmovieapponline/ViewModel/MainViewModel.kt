@@ -1,13 +1,10 @@
 package com.example.buildmovieapponline.ViewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.buildmovieapponline.Model.Category
-import com.example.buildmovieapponline.Model.MovieRepository
-import kotlinx.coroutines.launch
+import com.example.buildmovieapponline.Model.DataXprogramer.Category
+import com.example.buildmovieapponline.Model.DataXprogramer.MovieRepository
 
 class MainViewModel(private val movieRepository: MovieRepository) : ViewModel() {
 

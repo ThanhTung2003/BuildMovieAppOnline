@@ -1,6 +1,5 @@
 package com.example.buildmovieapponline.Model.DataTvShow
 
-import com.example.buildmovieapponline.Model.MovieApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

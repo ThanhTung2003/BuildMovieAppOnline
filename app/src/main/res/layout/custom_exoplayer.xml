@@ -78,9 +78,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_exo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="60dp"
+        android:background="@color/black_transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:padding="10dp">
 
@@ -100,11 +99,9 @@
             android:id="@+id/exo_time_bar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            android:clickable="true"
-            app:scrubber_disabled_size="0dp"
-            app:scrubber_dragged_size="0dp"
-            app:scrubber_enabled_size="0dp"
+            app:scrubber_color="@color/white"
+            app:scrubber_dragged_size="12dp"
+            app:scrubber_enabled_size="8dp"
             app:layout_constraintStart_toEndOf="@id/time_exo"
             app:layout_constraintEnd_toStartOf="@id/exo_duration"
             app:layout_constraintTop_toTopOf="parent"
@@ -137,6 +134,7 @@
             app:tint="@color/white"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

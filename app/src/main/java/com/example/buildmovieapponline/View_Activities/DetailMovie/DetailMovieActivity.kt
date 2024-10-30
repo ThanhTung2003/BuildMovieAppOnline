@@ -18,11 +18,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.buildmovieapponline.Model.ApiResponse
-import com.example.buildmovieapponline.Model.RetrofitClient
+import com.example.buildmovieapponline.Model.DataXprogramer.ApiResponse
+import com.example.buildmovieapponline.Model.DataXprogramer.RetrofitClient
 import com.example.buildmovieapponline.Model.DataVideo.VideoResponse
-import com.example.buildmovieapponline.Model.Movie
-import com.example.buildmovieapponline.Model.MovieItemListener
+import com.example.buildmovieapponline.Model.DataXprogramer.Movie
+import com.example.buildmovieapponline.Model.DataXprogramer.MovieItemListener
 import com.example.buildmovieapponline.R
 import com.example.buildmovieapponline.UI.stringForTime
 import com.example.buildmovieapponline.databinding.ActivityDetailMovieBinding
@@ -34,7 +34,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class DetailMovieActivity : AppCompatActivity(),MovieItemListener {
+class DetailMovieActivity : AppCompatActivity(), MovieItemListener {
     private lateinit var binding: ActivityDetailMovieBinding
     private var player: ExoPlayer? = null
     private var isFullscreen = false
@@ -292,6 +292,4 @@ class DetailMovieActivity : AppCompatActivity(),MovieItemListener {
             Toast.makeText(this, "Đây là phim hiện tại", Toast.LENGTH_SHORT).show()
         }
     }
-
-
 }

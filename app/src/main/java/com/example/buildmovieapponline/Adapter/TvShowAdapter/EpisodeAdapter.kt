@@ -8,17 +8,18 @@ import com.example.buildmovieapponline.R
 import com.example.buildmovieapponline.databinding.EpisodesItemBinding
 
 class EpisodeAdapter(
-    private val episodeNames: List<String>,
+    private val episodes: List<Pair<String, String>>,
     private val onEpisodeClick: (String) -> Unit
 ) : RecyclerView.Adapter<EpisodeAdapter.EpisodeViewHolder>() {
 
     inner class EpisodeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = EpisodesItemBinding.bind(view)
 
-        fun bind(episodeName: String) {
+        fun bind(episode: Pair<String, String>) {
+            val (episodeName, m3u8Link) = episode
             binding.buttonEpisodes.text = episodeName
             binding.buttonEpisodes.setOnClickListener {
-                onEpisodeClick(episodeName) // khi nhấn vào tập
+                onEpisodeClick(m3u8Link) // Khi nhấn vào tập, truyền link m3u8
             }
         }
     }
@@ -30,8 +31,8 @@ class EpisodeAdapter(
     }
 
     override fun onBindViewHolder(holder: EpisodeViewHolder, position: Int) {
-        holder.bind(episodeNames[position])
+        holder.bind(episodes[position])
     }
 
-    override fun getItemCount(): Int = episodeNames.size
+    override fun getItemCount(): Int = episodes.size
 }

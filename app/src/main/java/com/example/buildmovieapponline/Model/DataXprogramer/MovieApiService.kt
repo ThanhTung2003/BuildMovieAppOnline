@@ -1,8 +1,7 @@
-package com.example.buildmovieapponline.Model
+package com.example.buildmovieapponline.Model.DataXprogramer
 
 import com.example.buildmovieapponline.Model.DataLogin.LoginRequest
 import com.example.buildmovieapponline.Model.DataLogin.LoginResponse
-import com.example.buildmovieapponline.Model.DataTvShow.TvShowResponse
 import com.example.buildmovieapponline.Model.DataVideo.VideoResponse
 import retrofit2.Call
 import retrofit2.http.Body

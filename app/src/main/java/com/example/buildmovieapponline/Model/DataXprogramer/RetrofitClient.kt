@@ -1,4 +1,4 @@
-package com.example.buildmovieapponline.Model
+package com.example.buildmovieapponline.Model.DataXprogramer
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
