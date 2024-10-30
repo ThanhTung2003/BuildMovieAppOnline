@@ -2,25 +2,21 @@
 
 package com.example.buildmovieapponline.View_Activities.DetailMovie
 
-import CategoryMovieAdapter
+import com.example.buildmovieapponline.Adapter.MovieAdapter.CategoryMovieAdapter
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import android.widget.HorizontalScrollView
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.PopupMenu
-import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.buildmovieapponline.Model.ApiResponse
 import com.example.buildmovieapponline.Model.RetrofitClient

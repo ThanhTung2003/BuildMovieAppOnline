@@ -1,3 +1,5 @@
+package com.example.buildmovieapponline.Adapter.MovieAdapter
+
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup

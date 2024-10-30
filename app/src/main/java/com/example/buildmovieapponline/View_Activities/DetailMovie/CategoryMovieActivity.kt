@@ -1,6 +1,6 @@
 package com.example.buildmovieapponline.View_Activities.DetailMovie
 
-import CategoryMovieAdapter
+import com.example.buildmovieapponline.Adapter.MovieAdapter.CategoryMovieAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log

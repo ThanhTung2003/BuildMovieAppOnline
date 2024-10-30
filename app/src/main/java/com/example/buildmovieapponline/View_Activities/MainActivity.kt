@@ -1,6 +1,6 @@
 package com.example.buildmovieapponline.View_Activities
 
-import CategoryAdapter
+import com.example.buildmovieapponline.Adapter.MovieAdapter.CategoryAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -15,13 +15,12 @@ import com.example.buildmovieapponline.View_Activities.FavouriteMovie.FavoriteMo
 import com.example.buildmovieapponline.View_Activities.SearchActivity.SearchActivity
 import com.example.buildmovieapponline.View_Activities.TVChannel.TVChannelActivity
 import com.example.buildmovieapponline.Domain.SliderItems
-import com.example.buildmovieapponline.Adapter.SliderAdapter
+import com.example.buildmovieapponline.Adapter.MovieAdapter.SliderAdapter
 import com.example.buildmovieapponline.Model.RetrofitClient
 import com.example.buildmovieapponline.Model.ApiResponse
 import com.example.buildmovieapponline.Model.Category
 import com.example.buildmovieapponline.Model.Movie
 import com.example.buildmovieapponline.Model.MovieItemListener
-import com.example.buildmovieapponline.ViewModel.MainViewModel
 import com.example.buildmovieapponline.View_Activities.account.AccountActivity
 import com.example.buildmovieapponline.databinding.ActivityMainBinding
 import retrofit2.Call

@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buildmovieapponline.View_Activities.DetailMovie.DetailMovieActivity
-import com.example.buildmovieapponline.Adapter.SearchAdapter
+import com.example.buildmovieapponline.Adapter.MovieAdapter.SearchAdapter
 import com.example.buildmovieapponline.Model.RetrofitClient
 import com.example.buildmovieapponline.Model.ApiResponse
 import com.example.buildmovieapponline.Model.Movie
