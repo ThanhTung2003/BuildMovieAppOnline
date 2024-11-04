@@ -3,6 +3,7 @@ package com.example.buildmovieapponline.View_Activities.LoginLogoutActivity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,12 +20,18 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var sharedPreferences: SharedPreferences
 
+    companion object{
+        const val MYAPPPREFS = "MyAppPrefs"
+        const val CHECK = "check"
+        const val ISLOGGEDIN = "isLoggedIn"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         // Khởi tạo SharedPreferences
-        sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(MYAPPPREFS, MODE_PRIVATE)
 
         buttonLogin()
     }
@@ -51,7 +58,8 @@ class LoginActivity : AppCompatActivity() {
                 if (response.isSuccessful && response.body()?.status == "success") {
                     // Lưu trạng thái đăng nhập hoặc token nếu có
                     val editor = sharedPreferences.edit()
-                    editor.putBoolean("isLoggedIn", true)
+                    editor.putBoolean(ISLOGGEDIN, true)
+                    Log.d(CHECK,"Luu sharepreferences thanh cong")
                     editor.apply()
                     binding.progressBarLogin.visibility = View.VISIBLE
 
@@ -61,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
                     finish()
                 } else {
                     Toast.makeText(this@LoginActivity, response.body()?.body ?: "Login failed", Toast.LENGTH_SHORT).show()
+                    Log.d(CHECK,"Luu sharepreferences that bai")
                 }
             }
 

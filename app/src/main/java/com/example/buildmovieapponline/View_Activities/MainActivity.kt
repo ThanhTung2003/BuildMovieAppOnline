@@ -1,7 +1,9 @@
 package com.example.buildmovieapponline.View_Activities
 
+import android.content.Context
 import com.example.buildmovieapponline.Adapter.MovieAdapter.CategoryAdapter
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity(), MovieItemListener {
     private var sliderItems: MutableList<SliderItems> = ArrayList()
     private lateinit var progressBar: ProgressBar
     private var currentPage = 0
+    private lateinit var sharedPreferences: SharedPreferences
 
     private val sliderHandler : Handler = Handler(Looper.getMainLooper())
     private lateinit var sliderRunnable:Runnable
@@ -45,6 +48,9 @@ class MainActivity : AppCompatActivity(), MovieItemListener {
 
 
         progressBar = binding.progressBar1
+        sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+
+
 
         initView()
         banners()
