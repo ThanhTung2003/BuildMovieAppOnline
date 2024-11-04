@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.buildmovieapponline.Const.AppPreferences.Companion.CHECK
+import com.example.buildmovieapponline.Const.AppPreferences.Companion.MYAPPPREFS
 import com.example.buildmovieapponline.View_Activities.LoginLogoutActivity.LoginActivity
 import com.example.buildmovieapponline.databinding.ActivityAccountBinding
 
@@ -13,13 +15,15 @@ class AccountActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAccountBinding
     private lateinit var sharedPreferences: SharedPreferences
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Khởi tạo SharedPreferences
-        sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(MYAPPPREFS, MODE_PRIVATE)
 
 
         backAccount()
@@ -37,7 +41,7 @@ class AccountActivity : AppCompatActivity() {
             val intent = Intent(this@AccountActivity, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
-            Log.d("check","dang xuat oke")
+            Log.d(CHECK,"dang xuat oke")
             finish()
         }
     }

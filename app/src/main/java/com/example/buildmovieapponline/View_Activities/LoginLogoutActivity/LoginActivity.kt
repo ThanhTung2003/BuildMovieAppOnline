@@ -7,6 +7,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.buildmovieapponline.Const.AppPreferences.Companion.CHECK
+import com.example.buildmovieapponline.Const.AppPreferences.Companion.ISLOGGEDIN
+import com.example.buildmovieapponline.Const.AppPreferences.Companion.MYAPPPREFS
 import com.example.buildmovieapponline.View_Activities.MainActivity
 import com.example.buildmovieapponline.Model.DataXprogramer.RetrofitClient
 import com.example.buildmovieapponline.Model.DataLogin.LoginRequest
@@ -20,11 +23,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var sharedPreferences: SharedPreferences
 
-    companion object{
-        const val MYAPPPREFS = "MyAppPrefs"
-        const val CHECK = "check"
-        const val ISLOGGEDIN = "isLoggedIn"
-    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
