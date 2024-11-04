@@ -13,7 +13,7 @@ import retrofit2.http.Query
 interface MovieApiService {
 //    xprogamer
 
-    @GET("xgamer2/api/internship/exercise_5/home_page")
+    @GET("xprogamer/api/internship/exercise_5/home_page")
     fun getCategories(): Call<ApiResponse>
 
     @GET("moviesByCategory")
@@ -22,10 +22,10 @@ interface MovieApiService {
     @GET("search_movies")
     fun searchMovies(@Query("query") query: String): Call<ApiResponse>
 
-    @POST("xgamer2/api/internship/exercise_5/login")
+    @POST("xprogamer/api/internship/exercise_5/login")
     fun login(@Body loginRequest: LoginRequest): Call<LoginResponse>
 
-    @POST("xgamer2/api/internship/exercise_5/play/{id}")
+    @POST("xprogamer/api/internship/exercise_5/play/{id}")
     fun getVideoLink(@Path("id") movieId: String): Call<VideoResponse>
 
 

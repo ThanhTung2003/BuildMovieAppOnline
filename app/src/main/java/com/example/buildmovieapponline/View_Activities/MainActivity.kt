@@ -1,6 +1,5 @@
 package com.example.buildmovieapponline.View_Activities
 
-import android.content.Context
 import com.example.buildmovieapponline.Adapter.MovieAdapter.CategoryAdapter
 import android.content.Intent
 import android.content.SharedPreferences
@@ -18,6 +17,8 @@ import com.example.buildmovieapponline.View_Activities.SearchActivity.SearchActi
 import com.example.buildmovieapponline.View_Activities.TVChannel.TVChannelActivity
 import com.example.buildmovieapponline.Domain.SliderItems
 import com.example.buildmovieapponline.Adapter.MovieAdapter.SliderAdapter
+import com.example.buildmovieapponline.Const.AppPreferences.Companion.MAINACTIVITY
+import com.example.buildmovieapponline.Const.AppPreferences.Companion.MYAPPPREFS
 import com.example.buildmovieapponline.Model.DataXprogramer.RetrofitClient
 import com.example.buildmovieapponline.Model.DataXprogramer.ApiResponse
 import com.example.buildmovieapponline.Model.DataXprogramer.Category
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity(), MovieItemListener {
 
 
         progressBar = binding.progressBar1
-        sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(MYAPPPREFS, MODE_PRIVATE)
 
 
 
@@ -149,13 +150,13 @@ class MainActivity : AppCompatActivity(), MovieItemListener {
                     val categories = response.body()?.body ?: emptyList()
                     setupCategories(categories)
                 } else {
-                    Log.e("MainActivity", "Error fetching categories: ${response.errorBody()?.string()}")
+                    Log.e(MAINACTIVITY, "Error fetching categories: ${response.errorBody()?.string()}")
                 }
             }
 
             override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                 progressBar.visibility = View.GONE  // Ẩn ProgressBar khi có lỗi
-                Log.e("MainActivity", "API call failed: ${t.message}")
+                Log.e(MAINACTIVITY, "API call failed: ${t.message}")
             }
         })
     }
