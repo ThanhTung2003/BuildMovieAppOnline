@@ -1,5 +1,6 @@
 package com.example.buildmovieapponline.Model.DataXprogramer
 
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.START_POINT
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -7,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object RetrofitClient {
-    private const val BASE_URL = "https://testapi.io/api/"
+    private const val BASE_URL = START_POINT
 
     private fun getLoggingInterceptor(): HttpLoggingInterceptor {
         val loggingInterceptor = HttpLoggingInterceptor()

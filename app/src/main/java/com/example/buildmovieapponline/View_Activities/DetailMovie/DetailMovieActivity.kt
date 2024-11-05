@@ -18,6 +18,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.CATEGORY_ID
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.CHECK
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_CATEGORY
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_DESCRIPTION
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_DURATION
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_ID
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_NAME
 import com.example.buildmovieapponline.Model.DataXprogramer.ApiResponse
 import com.example.buildmovieapponline.Model.DataXprogramer.RetrofitClient
 import com.example.buildmovieapponline.Model.DataVideo.VideoResponse
@@ -46,7 +53,7 @@ class DetailMovieActivity : AppCompatActivity(), MovieItemListener {
         binding = ActivityDetailMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val movieId = intent.getStringExtra("MOVIE_ID") ?: ""
+        val movieId = intent.getStringExtra(MOVIE_ID) ?: ""
         displayMovieDetails()
 
         if (movieId.isNotEmpty()) {
@@ -55,39 +62,16 @@ class DetailMovieActivity : AppCompatActivity(), MovieItemListener {
             Toast.makeText(this, "Movie ID không hợp lệ", Toast.LENGTH_SHORT).show()
         }
 
-        val categoryId = intent.getIntExtra("CATEGORY_ID", 0)
+        val categoryId = intent.getIntExtra(CATEGORY_ID, 0)
         if (categoryId != 0) {
             setSameCategoryMovie()
             loadSameCategoryMovies(categoryId)
         }
 
-        detailMovieShowMore()
         displayMovieDetails()
         setupControlListeners()
         backArrowListeners()
 
-    }
-
-    private fun detailMovieShowMore() {
-//        binding.detailDescriptionMovie.post{
-//            if (binding.detailDescriptionMovie.lineCount > 3){
-//                binding.showMoreButton.visibility = View.VISIBLE
-//                binding.detailDescriptionMovie.maxLines = 3
-//                binding.showMoreButton.ellipsize = TextUtils.TruncateAt.END
-//            }
-//        }
-//        binding.showMoreButton.setOnClickListener {
-//            isDescriptionExpanded = !isDescriptionExpanded
-//            if (isDescriptionExpanded) {
-//                binding.detailDescriptionMovie.maxLines = Int.MAX_VALUE
-//                binding.detailDescriptionMovie.ellipsize = null
-//                binding.showMoreButton.text = "Thu gọn"
-//            } else {
-//                binding.detailDescriptionMovie.maxLines = 3
-//                binding.detailDescriptionMovie.ellipsize = TextUtils.TruncateAt.END
-//                binding.showMoreButton.text = "Xem thêm"
-//            }
-//        }
     }
 
     private fun loadSameCategoryMovies(categoryId: Int) {
@@ -133,7 +117,7 @@ class DetailMovieActivity : AppCompatActivity(), MovieItemListener {
             }
 
             override fun onFailure(call: Call<VideoResponse>, t: Throwable) {
-                Log.e("check", "Lỗi khi lấy link video: ${t.message}")
+                Log.e(CHECK, "Lỗi khi lấy link video: ${t.message}")
                 Toast.makeText(this@DetailMovieActivity, "Lỗi khi lấy link video", Toast.LENGTH_SHORT).show()
             }
         })
@@ -197,12 +181,12 @@ class DetailMovieActivity : AppCompatActivity(), MovieItemListener {
 
     @SuppressLint("SetTextI18n")
     private fun displayMovieDetails() {
-        binding.detailNameMovie.text = intent.getStringExtra("MOVIE_NAME")
-        binding.detailCategoryMovie.text = "Thể loại: ${intent.getStringExtra("MOVIE_CATEGORY")}"
-        binding.detailDurationMovie.text = "Thời lượng phim: ${intent.getIntExtra("MOVIE_DURATION", 0)} phút"
-        binding.detailDescriptionMovie.text = intent.getStringExtra("MOVIE_DESCRIPTION")
+        binding.detailNameMovie.text = intent.getStringExtra(MOVIE_NAME)
+        binding.detailCategoryMovie.text = "Thể loại: ${intent.getStringExtra(MOVIE_CATEGORY)}"
+        binding.detailDurationMovie.text = "Thời lượng phim: ${intent.getIntExtra(MOVIE_DURATION, 0)} phút"
+        binding.detailDescriptionMovie.text = intent.getStringExtra(MOVIE_DESCRIPTION)
         val titleExo = findViewById<TextView>(R.id.title_exo)
-        titleExo.text = intent.getStringExtra("MOVIE_NAME")
+        titleExo.text = intent.getStringExtra(MOVIE_NAME)
     }
 
     private fun setupControlListeners() {
@@ -278,7 +262,7 @@ class DetailMovieActivity : AppCompatActivity(), MovieItemListener {
     }
 
     override fun onItemClick(movie: Movie) {
-        var categoryId = 2
+        val categoryId = 2
         val currentMovieId = intent.getStringExtra("MOVIE_ID") ?: ""
         if (movie.id != currentMovieId) {
             val intent = Intent(this, DetailMovieActivity::class.java)

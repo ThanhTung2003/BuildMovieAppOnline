@@ -8,6 +8,13 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.CATEGORY_ID
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.CATEGORY_MOVIE_ACTIVITY
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.CATEGORY_TITLE
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_DESCRIPTION
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_DURATION
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_ID
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_NAME
 import com.example.buildmovieapponline.Model.DataXprogramer.RetrofitClient
 import com.example.buildmovieapponline.Model.DataXprogramer.ApiResponse
 import com.example.buildmovieapponline.Model.DataXprogramer.Movie
@@ -27,8 +34,8 @@ class CategoryMovieActivity : AppCompatActivity(), MovieItemListener {
         binding = ActivityCategoryMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val categoryId = intent.getIntExtra("CATEGORY_ID", 0)
-        val categoryTitle = intent.getStringExtra("CATEGORY_Title") ?: "Unknown"
+        val categoryId = intent.getIntExtra(CATEGORY_ID, 0)
+        val categoryTitle = intent.getStringExtra(CATEGORY_TITLE) ?: "Unknown"
         binding.titleCategoryViewAll.text = categoryTitle
 
         progressBar = binding.progressBar2
@@ -57,10 +64,10 @@ class CategoryMovieActivity : AppCompatActivity(), MovieItemListener {
                         // Lấy danh sách phim từ Category và cập nhật vào Adapter
                         categoryMovieAdapter.updateMovies(category.data)
                     } else {
-                        Log.e("CategoryMovieActivity", "loi khong tim thay ID: $categoryId")
+                        Log.e(CATEGORY_MOVIE_ACTIVITY, "loi khong tim thay ID: $categoryId")
                     }
                 } else {
-                    Log.e("CategoryMovieActivity", "khong lay dc data category: ${response.errorBody()?.string()}")
+                    Log.e(CATEGORY_MOVIE_ACTIVITY, "khong lay dc data category: ${response.errorBody()?.string()}")
                 }
             }
 
@@ -79,13 +86,13 @@ class CategoryMovieActivity : AppCompatActivity(), MovieItemListener {
     }
 
     override fun onItemClick(movie: Movie) {
-        var categoryId = 2
+        val categoryId = 2
         val intent = Intent(this, DetailMovieActivity::class.java)
-        intent.putExtra("MOVIE_ID", movie.id)
-        intent.putExtra("MOVIE_DESCRIPTION", movie.description)
-        intent.putExtra("MOVIE_DURATION", movie.duration)
-        intent.putExtra("MOVIE_NAME", movie.name)
-        intent.putExtra("CATEGORY_ID", categoryId)
+        intent.putExtra(MOVIE_ID, movie.id)
+        intent.putExtra(MOVIE_DESCRIPTION, movie.description)
+        intent.putExtra(MOVIE_DURATION, movie.duration)
+        intent.putExtra(MOVIE_NAME, movie.name)
+        intent.putExtra(CATEGORY_ID, categoryId)
         startActivity(intent)
     }
 }

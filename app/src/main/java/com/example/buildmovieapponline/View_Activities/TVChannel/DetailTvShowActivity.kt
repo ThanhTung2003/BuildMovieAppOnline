@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.buildmovieapponline.Adapter.EpisodeAdapter
-import com.example.buildmovieapponline.Model.DataTvShow.MovieDetail.Episode
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.DETAIL_TVSHOWACTIVITY
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_NAME
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.VIDEO_URL
 import com.example.buildmovieapponline.Model.DataTvShow.MovieDetail.TvShowDetailResponse
 import com.example.buildmovieapponline.Model.DataTvShow.TvShowRetrofitClient
 import com.example.buildmovieapponline.R
@@ -55,13 +57,13 @@ class DetailTvShowActivity : AppCompatActivity() {
                     }
                     setupEpisodesRecyclerView(episodeNames, tvShowDetails.name)
                 } else {
-                    Log.e("DetailTvShowActivity", "Không thể tải chi tiết của TV Show")
+                    Log.e(DETAIL_TVSHOWACTIVITY, "Không thể tải chi tiết của TV Show")
                 }
                 binding.progressBarDetailTVShow.visibility = View.GONE
             }
 
             override fun onFailure(call: Call<TvShowDetailResponse>, t: Throwable) {
-                Log.e("DetailTvShowActivity", "Lỗi: ${t.message}")
+                Log.e(DETAIL_TVSHOWACTIVITY, "Lỗi: ${t.message}")
             }
         })
     }
@@ -91,8 +93,8 @@ class DetailTvShowActivity : AppCompatActivity() {
     private fun setupEpisodesRecyclerView(episodeNames: List<Pair<String, String>>, movieName:String) {
         val episodeAdapter = EpisodeAdapter(episodeNames) { m3u8Link ->
             val intent = Intent(this, ExoPlayerTvShowActivity::class.java)
-            intent.putExtra("MOVIE_NAME", movieName )
-            intent.putExtra("VIDEO_URL", m3u8Link) // Truyền link m3u8 vào ExoPlayerTvShowActivity
+            intent.putExtra(MOVIE_NAME, movieName )
+            intent.putExtra(VIDEO_URL, m3u8Link) // Truyền link m3u8 vào ExoPlayerTvShowActivity
             startActivity(intent)
         }
         binding.recyclerViewEpisodes.apply {

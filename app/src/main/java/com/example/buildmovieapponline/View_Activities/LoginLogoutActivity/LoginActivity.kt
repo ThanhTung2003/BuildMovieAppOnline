@@ -7,9 +7,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.buildmovieapponline.Const.AppPreferences.Companion.CHECK
-import com.example.buildmovieapponline.Const.AppPreferences.Companion.ISLOGGEDIN
-import com.example.buildmovieapponline.Const.AppPreferences.Companion.MYAPPPREFS
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.CHECK
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.ISLOGGEDIN
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MYAPPPREFS
 import com.example.buildmovieapponline.View_Activities.MainActivity
 import com.example.buildmovieapponline.Model.DataXprogramer.RetrofitClient
 import com.example.buildmovieapponline.Model.DataLogin.LoginRequest
@@ -21,17 +21,15 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var sharedPreferences: SharedPreferences
-
+    private lateinit var sharedPreferences: com.example.buildmovieapponline.Const.SharedPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // Khởi tạo SharedPreferences
-        sharedPreferences = getSharedPreferences(MYAPPPREFS, MODE_PRIVATE)
 
+        sharedPreferences = com.example.buildmovieapponline.Const.SharedPreferences(this)
         buttonLogin()
     }
 
@@ -56,12 +54,9 @@ class LoginActivity : AppCompatActivity() {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful && response.body()?.status == "success") {
                     // Lưu trạng thái đăng nhập hoặc token nếu có
-                    val editor = sharedPreferences.edit()
-                    editor.putBoolean(ISLOGGEDIN, true)
+                    sharedPreferences.setLoggedIn(true)
                     Log.d(CHECK,"Luu sharepreferences thanh cong")
-                    editor.apply()
                     binding.progressBarLogin.visibility = View.VISIBLE
-
                     //login thanh cong
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
