@@ -17,8 +17,13 @@ import com.example.buildmovieapponline.View_Activities.SearchActivity.SearchActi
 import com.example.buildmovieapponline.View_Activities.TVChannel.TVChannelActivity
 import com.example.buildmovieapponline.Domain.SliderItems
 import com.example.buildmovieapponline.Adapter.MovieAdapter.SliderAdapter
-import com.example.buildmovieapponline.Const.AppPreferences.Companion.MAINACTIVITY
-import com.example.buildmovieapponline.Const.AppPreferences.Companion.MYAPPPREFS
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.CATEGORY_ID
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MAINACTIVITY
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_DESCRIPTION
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_DURATION
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_ID
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_NAME
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MYAPPPREFS
 import com.example.buildmovieapponline.Model.DataXprogramer.RetrofitClient
 import com.example.buildmovieapponline.Model.DataXprogramer.ApiResponse
 import com.example.buildmovieapponline.Model.DataXprogramer.Category
@@ -117,7 +122,7 @@ class MainActivity : AppCompatActivity(), MovieItemListener {
     }
 
     private fun setupSliderRunnable() {
-        sliderRunnable = Runnable() {
+        sliderRunnable = Runnable {
             sliderRunnable = Runnable {
                 currentPage = (currentPage + 1) % sliderAdapter.itemCount
                 binding.viewpagerSlider.currentItem = currentPage
@@ -163,13 +168,13 @@ class MainActivity : AppCompatActivity(), MovieItemListener {
 
     // chuyển sang detail phim
     override fun onItemClick(movie: Movie) {
-        var categoryId: Int = 1
+        val categoryId = 1
         val intent = Intent(this, DetailMovieActivity::class.java)
-        intent.putExtra("MOVIE_ID", movie.id)
-        intent.putExtra("MOVIE_NAME", movie.name)
-        intent.putExtra("CATEGORY_ID", categoryId)
-        intent.putExtra("MOVIE_DURATION", movie.duration)
-        intent.putExtra("MOVIE_DESCRIPTION", movie.description)
+        intent.putExtra(MOVIE_ID, movie.id)
+        intent.putExtra(MOVIE_NAME, movie.name)
+        intent.putExtra(CATEGORY_ID, categoryId)
+        intent.putExtra(MOVIE_DURATION, movie.duration)
+        intent.putExtra(MOVIE_DESCRIPTION, movie.description)
         startActivity(intent)
     }
 

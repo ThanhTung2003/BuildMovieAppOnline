@@ -22,8 +22,8 @@ import java.util.List;
 
 public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderViewHolder> {
 
-    private List<SliderItems> sliderItems;
-    private ViewPager2 viewPager2;
+    private final List<SliderItems> sliderItems;
+    private final ViewPager2 viewPager2;
     private Context context;
 
 
@@ -55,14 +55,14 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
     }
 
     public class SliderViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imageView;
+        private final ImageView imageView;
         public SliderViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageSlide);
         }
         void setImage(SliderItems sliderItems){
             RequestOptions requestOptions = new RequestOptions();
-            requestOptions = requestOptions.transforms(new CenterCrop(), new RoundedCorners(60));
+            requestOptions = requestOptions.transforms(new CenterCrop(), new RoundedCorners(5));
 
             Glide.with(context)
                     .load(sliderItems.getImageUrl()) // Sử dụng URL thay vì ID tài nguyên
@@ -71,7 +71,7 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
         }
 
     }
-    private Runnable runnable = new Runnable() {
+    private final Runnable runnable = new Runnable() {
         @Override
         public void run() {
             sliderItems.addAll(sliderItems);

@@ -12,6 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buildmovieapponline.View_Activities.DetailMovie.DetailMovieActivity
 import com.example.buildmovieapponline.Adapter.MovieAdapter.SearchAdapter
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.CATEGORY_ID
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_DESCRIPTION
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_DURATION
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_ID
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_NAME
 import com.example.buildmovieapponline.Model.DataXprogramer.RetrofitClient
 import com.example.buildmovieapponline.Model.DataXprogramer.ApiResponse
 import com.example.buildmovieapponline.Model.DataXprogramer.Movie
@@ -72,11 +77,11 @@ class SearchActivity : AppCompatActivity() {
         val adapter = SearchAdapter(movies,object : MovieItemListener {
             override fun onItemClick(movie: Movie) {
                 val intent = Intent(this@SearchActivity, DetailMovieActivity::class.java)
-                intent.putExtra("MOVIE_ID", movie.id)
-                intent.putExtra("MOVIE_NAME", movie.name)
-                intent.putExtra("CATEGORY_ID", categoryId)
-                intent.putExtra("MOVIE_DURATION", movie.duration)
-                intent.putExtra("MOVIE_DESCRIPTION", movie.description)
+                intent.putExtra(MOVIE_ID, movie.id)
+                intent.putExtra(MOVIE_NAME, movie.name)
+                intent.putExtra(CATEGORY_ID, categoryId)
+                intent.putExtra(MOVIE_DURATION, movie.duration)
+                intent.putExtra(MOVIE_DESCRIPTION, movie.description)
                 startActivity(intent)
             }
         })
@@ -85,7 +90,7 @@ class SearchActivity : AppCompatActivity() {
             this.adapter = adapter
         }
         if (movies.isEmpty()) {
-            // Hiển thị thông báo không tìm thấy kết quả hoặc một số phản hồi phù hợp
+
             Toast.makeText(this@SearchActivity, "Không tìm thấy phim phù hợp", Toast.LENGTH_LONG).show()
         }
     }

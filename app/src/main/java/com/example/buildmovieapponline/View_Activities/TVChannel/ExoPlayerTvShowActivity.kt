@@ -12,6 +12,8 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_NAME
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.VIDEO_URL
 import com.example.buildmovieapponline.R
 import com.example.buildmovieapponline.UI.stringForTime
 import com.example.buildmovieapponline.databinding.ActivityExoPlayerTvShowBinding
@@ -30,10 +32,10 @@ class ExoPlayerTvShowActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val exotitle = findViewById<TextView>(R.id.title_exo)
-        val movieName = intent.getStringExtra("MOVIE_NAME")
+        val movieName = intent.getStringExtra(MOVIE_NAME)
         exotitle.text = movieName
 
-        val videoUrl = intent.getStringExtra("VIDEO_URL") ?: ""
+        val videoUrl = intent.getStringExtra(VIDEO_URL) ?: ""
         setupPlayer(videoUrl) // Khởi tạo player với video URL
         setupControlListeners()
         backArrowListeners()

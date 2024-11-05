@@ -6,15 +6,15 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.example.buildmovieapponline.Const.AppPreferences.Companion.CHECK
-import com.example.buildmovieapponline.Const.AppPreferences.Companion.ISLOGGEDIN
-import com.example.buildmovieapponline.Const.AppPreferences.Companion.MYAPPPREFS
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.CHECK
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.ISLOGGEDIN
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MYAPPPREFS
 import com.example.buildmovieapponline.View_Activities.MainActivity
 import com.example.buildmovieapponline.databinding.ActivityIntroBinding
 
 class IntroActivity : AppCompatActivity() {
     private lateinit var binding: ActivityIntroBinding
-    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var sharedPreferences: com.example.buildmovieapponline.Const.SharedPreferences
 
 
 
@@ -24,11 +24,10 @@ class IntroActivity : AppCompatActivity() {
         installSplashScreen()
         binding = ActivityIntroBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        sharedPreferences = getSharedPreferences(MYAPPPREFS, MODE_PRIVATE)
+        sharedPreferences = com.example.buildmovieapponline.Const.SharedPreferences(this)
 
         //kiem tra dang nhap
-        val isLoggedIn = sharedPreferences.getBoolean(ISLOGGEDIN, false)
-        if (isLoggedIn) {
+        if (sharedPreferences.isLoggedIn()) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             Log.d(CHECK, "da co tai khoan")

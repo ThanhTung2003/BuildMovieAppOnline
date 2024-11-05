@@ -6,14 +6,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.buildmovieapponline.Const.AppPreferences.Companion.CHECK
-import com.example.buildmovieapponline.Const.AppPreferences.Companion.MYAPPPREFS
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.CHECK
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.MYAPPPREFS
 import com.example.buildmovieapponline.View_Activities.LoginLogoutActivity.LoginActivity
 import com.example.buildmovieapponline.databinding.ActivityAccountBinding
 
 class AccountActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAccountBinding
-    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var sharedPreferences: com.example.buildmovieapponline.Const.SharedPreferences
 
 
 
@@ -23,7 +23,7 @@ class AccountActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Khởi tạo SharedPreferences
-        sharedPreferences = getSharedPreferences(MYAPPPREFS, MODE_PRIVATE)
+        sharedPreferences = com.example.buildmovieapponline.Const.SharedPreferences(this)
 
 
         backAccount()
@@ -35,9 +35,7 @@ class AccountActivity : AppCompatActivity() {
         binding.logoutBtn.setOnClickListener {
             binding.progressBarLogout.visibility = View.VISIBLE
             // Xóa trạng thái đăng nhập khỏi SharedPreferences
-            val editor = sharedPreferences.edit()
-            editor.clear() // Xóa tất cả dữ liệu trong SharedPreferences
-            editor.apply()
+            sharedPreferences.clearSharePreferences()
             val intent = Intent(this@AccountActivity, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)

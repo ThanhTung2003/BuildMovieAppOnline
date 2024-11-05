@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.buildmovieapponline.Adapter.TvShowAdapter.TvShowAdapter
+import com.example.buildmovieapponline.Const.CompanionObject.Companion.TV_SHOW_SLUG
 import com.example.buildmovieapponline.Model.DataTvShow.TvShow
 import com.example.buildmovieapponline.Model.DataTvShow.TvShowResponse
 import com.example.buildmovieapponline.Model.DataTvShow.TvShowRetrofitClient
@@ -52,7 +53,7 @@ class TVChannelActivity : AppCompatActivity() {
         binding.recyclerViewTVShow.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.recyclerViewTVShow.adapter = TvShowAdapter(tvShows) { tvShows ->
             val intent = Intent(this, DetailTvShowActivity::class.java)
-            intent.putExtra("TV_SHOW_SLUG", tvShows.slug)
+            intent.putExtra(TV_SHOW_SLUG, tvShows.slug)
             startActivity(intent)
         }
     }
