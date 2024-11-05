@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/imageSlide"
+    android:src="@drawable/mytvcircle"
     android:scaleType="fitXY"
-    android:adjustViewBounds="false"
+    android:adjustViewBounds="true"
     android:minHeight="300dp">
-
 </ImageView>
