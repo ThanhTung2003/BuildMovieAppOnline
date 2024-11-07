@@ -8,34 +8,33 @@
     android:layout_height="match_parent"
     tools:context=".View_Activities.DetailMovie.DetailMovieActivity">
 
+    <com.google.android.exoplayer2.ui.StyledPlayerView
+        android:id="@+id/playerView"
+        android:background="@color/main_color"
+        app:resize_mode="fit"
+        app:show_buffering="when_playing"
+        app:controller_layout_id="@layout/custom_exoplayer"
+        android:layout_width="0dp"
+        android:layout_height="375dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/playerView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.google.android.exoplayer2.ui.StyledPlayerView
-                    android:id="@+id/playerView"
-                    android:background="@color/main_color"
-                    app:resize_mode="fit"
-                    app:show_buffering="when_playing"
-                    app:controller_layout_id="@layout/custom_exoplayer"
-                    android:layout_width="match_parent"
-                    android:layout_height="375dp" />
-
-            </FrameLayout>
 
             <LinearLayout
                 android:layout_marginStart="10dp"
@@ -134,18 +133,19 @@
                     android:layout_height="match_parent"
                     android:nestedScrollingEnabled="false"/>
 
-                <ProgressBar
-                    android:id="@+id/progressBarSameCategoryMovie"
-                    android:indeterminate="false"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/detail_RecyclerViewSameMovie"
-                    app:layout_constraintTop_toTopOf="@+id/detail_RecyclerViewSameMovie" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+    <ProgressBar
+        android:id="@+id/progressBarSameCategoryMovie"
+        android:indeterminate="false"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

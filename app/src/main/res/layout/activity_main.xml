@@ -63,7 +63,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_marginBottom="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="550dp">
+                android:layout_height="500dp">
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/viewpagerSlider"
@@ -77,7 +77,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_marginBottom="55dp"
+                android:layout_marginBottom="35dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 

@@ -11,12 +11,11 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.buildmovieapponline.Adapter.MovieAdapter.SliderAdapter
 import com.example.buildmovieapponline.View_Activities.DetailMovie.DetailMovieActivity
 import com.example.buildmovieapponline.View_Activities.FavouriteMovie.FavoriteMovieActivity
 import com.example.buildmovieapponline.View_Activities.SearchActivity.SearchActivity
 import com.example.buildmovieapponline.View_Activities.TVChannel.TVChannelActivity
-import com.example.buildmovieapponline.Domain.SliderItems
-import com.example.buildmovieapponline.Adapter.MovieAdapter.SliderAdapter
 import com.example.buildmovieapponline.Const.CompanionObject.Companion.CATEGORY_ID
 import com.example.buildmovieapponline.Const.CompanionObject.Companion.MAINACTIVITY
 import com.example.buildmovieapponline.Const.CompanionObject.Companion.MOVIE_DESCRIPTION
@@ -29,8 +28,10 @@ import com.example.buildmovieapponline.Model.DataXprogramer.ApiResponse
 import com.example.buildmovieapponline.Model.DataXprogramer.Category
 import com.example.buildmovieapponline.Model.DataXprogramer.Movie
 import com.example.buildmovieapponline.Model.DataXprogramer.MovieItemListener
+import com.example.buildmovieapponline.Model.DataXprogramer.SliderItems
 import com.example.buildmovieapponline.View_Activities.account.AccountActivity
 import com.example.buildmovieapponline.databinding.ActivityMainBinding
+import com.example.buildmovieapponline.databinding.SliderItemContainerBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,7 +39,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity(), MovieItemListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var sliderAdapter: SliderAdapter
-    private var sliderItems: MutableList<SliderItems> = ArrayList()
+    private var sliderItems: MutableList<Movie> = ArrayList()
     private lateinit var progressBar: ProgressBar
     private var currentPage = 0
     private lateinit var sharedPreferences: SharedPreferences
@@ -108,17 +109,29 @@ class MainActivity : AppCompatActivity(), MovieItemListener {
     }
 
     private fun banners() {
-        sliderItems.apply {
-            sliderItems.add(SliderItems("https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/9/6/1089731/03_TIEU-VY-01.jpg"))
-            sliderItems.add(SliderItems("https://vntravel.org.vn/uploads/images/2024/02/20/poster-mai-scaled-1708403724.jpg"))
-            sliderItems.add(SliderItems("https://cdn2.fptshop.com.vn/unsafe/Uploads/images/tin-tuc/176627/Originals/poster-phim-hoat-hinh-1.jpg"))
-            sliderItems.add(SliderItems("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU5x4RG6kKHVlboTSZbUoB6wTfeuHPI3t-8FT3po3Q18sxrcco9j4J4bJBFZtjqZ6e27k&usqp=CAU"))
-            sliderItems.add(SliderItems("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0nzWfFNWdZKYeWV-I8Lm1u9BDUfGI0ls3Aw&s"))
-        }
+        RetrofitClient.instance.getCategories().enqueue(object : Callback<ApiResponse> {
+            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                if (response.isSuccessful) {
+                    val categories = response.body()?.body ?: emptyList()
+                    sliderItems.clear()
+                    categories.forEach { category ->
+                        category.data.forEach { movie ->
+                            if (!movie.logo.isNullOrEmpty()) {
+                                sliderItems.add(movie)  // Directly add Movie objects to sliderItems
+                            }
+                        }
+                    }
+                    sliderAdapter = SliderAdapter(sliderItems, this@MainActivity)
+                    binding.viewpagerSlider.adapter = sliderAdapter
+                } else {
+                    Log.e(MAINACTIVITY, "Error fetching banners: ${response.errorBody()?.string()}")
+                }
+            }
 
-        sliderAdapter = SliderAdapter(binding.viewpagerSlider, sliderItems)
-        binding.viewpagerSlider.adapter = sliderAdapter
-
+            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                Log.e(MAINACTIVITY, "API call failed: ${t.message}")
+            }
+        })
     }
 
     private fun setupSliderRunnable() {
