@@ -29,12 +29,10 @@ class SearchAdapter(private val movies: List<Movie>, private val listener: Movie
 
     class SearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.search_NameMovie)
-        private val durationTextView: TextView = itemView.findViewById(R.id.search_Duration)
         private val movieImageView: ImageView = itemView.findViewById(R.id.imageSearchMovie)
 
         fun bind(movie: Movie) {
-            nameTextView.text = "Tên phim: ${movie.name}"
-            durationTextView.text = "Thời lượng: ${movie.duration} phút"
+            nameTextView.text = "${movie.name}"
             Glide.with(itemView.context).load(movie.logo).into(movieImageView)
         }
     }

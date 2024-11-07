@@ -3,11 +3,16 @@ package com.example.buildmovieapponline.View_Activities.SearchActivity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.toColor
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buildmovieapponline.View_Activities.DetailMovie.DetailMovieActivity
@@ -48,6 +53,9 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun performSearch(query: String) {
+        val progressBarSearch = findViewById<ProgressBar>(R.id.progressBarSearch)
+        progressBarSearch.visibility = View.VISIBLE
+
         RetrofitClient.instance.getCategories().enqueue(object : Callback<ApiResponse> {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 if (response.isSuccessful) {
@@ -64,10 +72,11 @@ class SearchActivity : AppCompatActivity() {
                 } else {
                     Log.e("SearchActivity", "Error: ${response.errorBody()?.string()}")
                 }
+                progressBarSearch.visibility =View.GONE
             }
-
             override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                 Log.e("SearchActivity", "Failure: ${t.message}")
+                progressBarSearch.visibility =View.GONE
             }
         })
     }
@@ -86,12 +95,16 @@ class SearchActivity : AppCompatActivity() {
             }
         })
         findViewById<RecyclerView>(R.id.listSearchMovie).apply {
-            layoutManager = LinearLayoutManager(this@SearchActivity)
+            layoutManager = GridLayoutManager(this@SearchActivity,2)
             this.adapter = adapter
         }
+        // search_results
+        val searchResultsTextView: TextView = findViewById(R.id.search_results)
         if (movies.isEmpty()) {
-
+            searchResultsTextView.text = "${movies.size} Kết quả tìm kiếm"
             Toast.makeText(this@SearchActivity, "Không tìm thấy phim phù hợp", Toast.LENGTH_LONG).show()
+        }else{
+            searchResultsTextView.text = "${movies.size} Kết quả tìm kiếm"
         }
     }
 

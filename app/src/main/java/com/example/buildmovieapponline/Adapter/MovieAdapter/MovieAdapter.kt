@@ -16,7 +16,6 @@ class MovieAdapter(
     private val categoryId: Int
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    // Define view types for each layout
     companion object {
         const val VIEW_TYPE_1 = 1
         const val VIEW_TYPE_2 = 2

@@ -10,7 +10,7 @@
     android:background="@color/main_color">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/main_color"
         android:orientation="vertical">
@@ -20,22 +20,19 @@
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
             android:src="@drawable/logo_mytv"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="155dp"
+            android:layout_width="135dp"
             android:layout_height="175dp"/>
 
         <TextView
             android:id="@+id/title_Movie"
-            android:layout_marginStart="5dp"
             android:text="Phim hay"
             android:textSize="14sp"
-            android:textColor="@color/yellow"
+            android:textColor="@color/white"
             android:textStyle="bold"
-            android:paddingStart="2dp"
+            android:layout_gravity="center_horizontal"
             app:layout_constraintTop_toBottomOf="@+id/imageMovie"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
