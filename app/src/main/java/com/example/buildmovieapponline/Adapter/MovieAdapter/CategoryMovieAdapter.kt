@@ -10,6 +10,7 @@ import com.example.buildmovieapponline.Model.DataXprogramer.MovieDiffCallback
 import com.example.buildmovieapponline.Model.DataXprogramer.MovieItemListener
 import com.example.buildmovieapponline.R
 import com.example.buildmovieapponline.databinding.MovieItemBinding
+import com.example.buildmovieapponline.databinding.ViewAllCategoryBinding
 
 class CategoryMovieAdapter(
     private var movies: MutableList<Movie>,
@@ -17,7 +18,7 @@ class CategoryMovieAdapter(
 ) : RecyclerView.Adapter<CategoryMovieAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val binding = MovieItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ViewAllCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MovieViewHolder(binding)
     }
 
@@ -39,13 +40,13 @@ class CategoryMovieAdapter(
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class MovieViewHolder(private val binding: MovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MovieViewHolder(private val binding: ViewAllCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
             binding.titleMovie.text = movie.name
             Glide.with(itemView.context)
                 .load(movie.logo)
-                .placeholder(R.drawable.mytvcircle) // Hình ảnh chờ
-                .error(R.drawable.mytvcircle) // Hình ảnh lỗi
+                .placeholder(R.drawable.mytvcircle)
+                .error(R.drawable.mytvcircle)
                 .into(binding.imageMovie)
         }
     }

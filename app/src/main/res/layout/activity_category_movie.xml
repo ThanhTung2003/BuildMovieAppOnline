@@ -25,7 +25,6 @@
 
         <TextView
             android:id="@+id/title_CategoryViewAll"
-            android:text="Action Movie"
             android:textColor="@color/yellow"
             android:textStyle="bold"
             android:textSize="22sp"

@@ -22,7 +22,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/logo_mytv"
             android:layout_width="185dp"
-            android:layout_height="210dp"/>
+            android:layout_height="235dp"/>
 
         <TextView
             android:id="@+id/search_NameMovie"

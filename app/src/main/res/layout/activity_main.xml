@@ -119,6 +119,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.bottomappbar.BottomAppBar
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
