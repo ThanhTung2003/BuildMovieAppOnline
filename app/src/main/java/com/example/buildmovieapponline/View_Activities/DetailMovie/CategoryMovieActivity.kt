@@ -48,7 +48,7 @@ class CategoryMovieActivity : AppCompatActivity(), MovieItemListener {
 
     private fun setupCategoryMovie() {
         categoryMovieAdapter = CategoryMovieAdapter(mutableListOf(), this)
-        binding.RecyclerViewAllCategory.layoutManager = GridLayoutManager(this,3)
+        binding.RecyclerViewAllCategory.layoutManager = GridLayoutManager(this,2)
         binding.RecyclerViewAllCategory.adapter = categoryMovieAdapter
     }
 
